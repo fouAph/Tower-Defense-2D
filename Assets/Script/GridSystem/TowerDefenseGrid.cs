@@ -2,45 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
+using UnityEngine.Tilemaps;
+
 public class TowerDefenseGrid : MonoBehaviour
 {
-    private GridSystem<TDGridNode> grid;
+    public static TowerDefenseGrid Singleton;
+
+    [SerializeField] Tilemap NotPlaceableTilemap;
+    private List<Vector3> occupiedCoordinates = new List<Vector3>();
+
+    private void Awake()
+    {
+        Singleton = this;
+        grid = new GridSystem<TDGridNode>(width, height, cellSize, transform.position, (GridSystem<TDGridNode> g, int x, int y) => new TDGridNode(g, x, y));
+    }
+    public static GridSystem<TDGridNode> grid;
     [SerializeField] List<GameObject> towerPrefab = new List<GameObject>();
 
     [SerializeField] int width = 5;
     [SerializeField] int height = 5;
     [SerializeField] float cellSize = 5f;
     [SerializeField] TDGridNode selectedGrid;
+
     private void Start()
     {
-        grid = new GridSystem<TDGridNode>(width, height, cellSize, transform.position, (GridSystem<TDGridNode> g, int x, int y) => new TDGridNode(g, x, y));
+        SetOccupiedInTilemap();
     }
 
-    private void Update()
+    public void SetOccupiedInTilemap()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        BoundsInt bounds = NotPlaceableTilemap.cellBounds;
+
+
+        // Initialize a list to store the world positions
+        List<Vector3> occupiedCoordinates = new List<Vector3>();
+
+
+        // Iterate over the tiles within the bounds
+        for (int x = bounds.min.x; x < bounds.max.x; x++)
         {
-            Vector3 pos = CodeMonkey.Utils.UtilsClass.GetMouseWorldPosition();
-            TDGridNode gridobj = grid.GetGridObject(pos);
-            // selectedGrid = gridobj;
-            if (gridobj.GetOccupied())
+            for (int y = bounds.min.y; y < bounds.max.y; y++)
             {
-                print("Canot Place tower here");
-                return;
+                // Get the position of the current tile
+                Vector3Int cellPosition = new Vector3Int(x, y, 0);
+
+                // Check if the tile exists at the current position
+                if (NotPlaceableTilemap.HasTile(cellPosition))
+                {
+                    // Convert the cell position to world position
+                    Vector3 worldPosition = NotPlaceableTilemap.CellToWorld(cellPosition);
+
+                    // Add the world position to the list
+                    occupiedCoordinates.Add(worldPosition);
+                }
             }
-            SpawnTower();
-            gridobj.SetOccupied(true);
-            gridobj.TriggerGridObjectChanged();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        // Print the list of world positions
+        foreach (Vector3 coordinate in occupiedCoordinates)
         {
-            if (selectedGrid != null)
-                selectedGrid.SetWalkable(true);
+            if (grid.GetGridObject(coordinate) != null)
+            {
+                grid.GetGridObject(coordinate).SetOccupied(true);
+                Debug.Log("Tile coordinates: " + coordinate + " " + grid.GetGridObject(coordinate).GetOccupied());
+                //  grid.GetGridObject(coordinate).LogDebug();}
+            }
+
         }
     }
-
-    public void SetOccupiedWithCollider(BoxCollider2D boxCollider2D)
+    public static void SetOccupiedWithCollider(BoxCollider2D boxCollider2D)
     {
         Vector2[] cornerPosition = new Vector2[5];
         Bounds bounds = boxCollider2D.bounds;
@@ -63,7 +93,6 @@ public class TowerDefenseGrid : MonoBehaviour
         for (int i = 0; i < cornerPosition.Length; i++)
         {
             grid.GetGridObject(cornerPosition[i]).SetOccupied(true);
-            grid.GetGridObject(cornerPosition[i]).TriggerGridObjectChanged();
         }
 
         for (int i = 0; i < cornerPosition.Length; i++)
@@ -77,23 +106,26 @@ public class TowerDefenseGrid : MonoBehaviour
         Debug.Log("Bottom Right Corner: " + bottomRightCorner);
     }
 
-    private void SpawnTower()
+    public static void SpawnTower()
     {
         Vector3 spawnPosition = UtilsClass.GetMouseWorldPosition();
         spawnPosition = ValidateWorldGridPosition(spawnPosition);
         spawnPosition += new Vector3(1, 1, 0) * grid.GetCellSize() * .5f;
 
-        var tower = Instantiate(towerPrefab[0], spawnPosition, Quaternion.identity);
+        var tower = Instantiate(GameManager.Singleton.GetSelectedTower(), spawnPosition, Quaternion.identity);
         SetOccupiedWithCollider(tower.GetComponent<BoxCollider2D>());
     }
 
-
-    private Vector3 ValidateWorldGridPosition(Vector3 position)
+    public static Vector3 ValidateWorldGridPosition(Vector3 position)
     {
         grid.GetXY(position, out int x, out int y);
         return grid.GetWorldPosition(x, y);
     }
 
+    public TDGridNode GetSelectedGrid()
+    {
+        return selectedGrid;
+    }
 }
 
 [System.Serializable]
@@ -112,6 +144,7 @@ public class TDGridNode
         this.x = x;
         this.y = y;
     }
+
     public void TriggerGridObjectChanged()
     {
         grid.TriggerGridObjectChanged(x, y);
@@ -153,6 +186,12 @@ public class TDGridNode
     public void SetOccupied(bool value)
     {
         occupied = value;
+        TriggerGridObjectChanged();
+    }
+
+    public void LogDebug()
+    {
+        Debug.Log("Location: " + new Vector2(x, y) + "Walkable: " + walkable + "Occupied: " + occupied);
     }
 
 
