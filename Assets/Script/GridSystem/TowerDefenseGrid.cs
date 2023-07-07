@@ -30,6 +30,7 @@ public class TowerDefenseGrid : MonoBehaviour
             }
             SpawnTower();
             gridobj.SetOccupied(true);
+            gridobj.TriggerGridObjectChanged();
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -41,12 +42,13 @@ public class TowerDefenseGrid : MonoBehaviour
 
     public void SetOccupiedWithCollider(BoxCollider2D boxCollider2D)
     {
-        Vector2[] cornerPosition = new Vector2[4];
+        Vector2[] cornerPosition = new Vector2[5];
         Bounds bounds = boxCollider2D.bounds;
 
         // Calculate the corner positions
         Vector2 topLeftCorner = new Vector2(bounds.min.x, bounds.max.y);
         Vector2 topRightCorner = bounds.max;
+        Vector2 topMiddleCorner = new Vector2(bounds.min.x / 2, bounds.max.y);
         Vector2 bottomLeftCorner = bounds.min;
         Vector2 bottomRightCorner = new Vector2(bounds.max.x, bounds.min.y);
 
@@ -56,6 +58,7 @@ public class TowerDefenseGrid : MonoBehaviour
         cornerPosition[1] = topRightCorner;
         cornerPosition[2] = bottomLeftCorner;
         cornerPosition[3] = bottomRightCorner;
+        cornerPosition[4] = topMiddleCorner;
 
         for (int i = 0; i < cornerPosition.Length; i++)
         {
