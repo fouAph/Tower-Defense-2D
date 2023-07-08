@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
             Vector3 pos = CodeMonkey.Utils.UtilsClass.GetMouseWorldPosition();
             TDGridNode gridobj = TowerDefenseGrid.grid.GetGridObject(pos);
             // selectedGrid = gridobj;
+            if (gridobj == null) return;
             if (gridobj.GetOccupied())
             {
                 print("Canot Place tower here");
@@ -43,9 +44,9 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if(Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-             Vector3 pos = CodeMonkey.Utils.UtilsClass.GetMouseWorldPosition();
+            Vector3 pos = CodeMonkey.Utils.UtilsClass.GetMouseWorldPosition();
             TDGridNode gridobj = TowerDefenseGrid.grid.GetGridObject(pos);
             gridobj.LogDebug();
         }

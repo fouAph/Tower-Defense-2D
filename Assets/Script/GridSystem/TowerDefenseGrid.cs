@@ -8,9 +8,7 @@ public class TowerDefenseGrid : MonoBehaviour
 {
     public static TowerDefenseGrid Singleton;
 
-    [SerializeField] Tilemap NotPlaceableTilemap;
-    private List<Vector3> occupiedCoordinates = new List<Vector3>();
-
+    [SerializeField] Tilemap NotPlaceableTilemap; 
     private void Awake()
     {
         Singleton = this;
@@ -32,11 +30,11 @@ public class TowerDefenseGrid : MonoBehaviour
     public void SetOccupiedInTilemap()
     {
         BoundsInt bounds = NotPlaceableTilemap.cellBounds;
-
+        Vector3 cellSize = NotPlaceableTilemap.cellSize;
+        Vector3 origin = NotPlaceableTilemap.transform.position;
 
         // Initialize a list to store the world positions
         List<Vector3> occupiedCoordinates = new List<Vector3>();
-
 
         // Iterate over the tiles within the bounds
         for (int x = bounds.min.x; x < bounds.max.x; x++)
@@ -52,6 +50,9 @@ public class TowerDefenseGrid : MonoBehaviour
                     // Convert the cell position to world position
                     Vector3 worldPosition = NotPlaceableTilemap.CellToWorld(cellPosition);
 
+                    // Adjust the world position based on cell size and origin
+                    worldPosition += cellSize * 0.5f + origin;
+
                     // Add the world position to the list
                     occupiedCoordinates.Add(worldPosition);
                 }
@@ -64,12 +65,11 @@ public class TowerDefenseGrid : MonoBehaviour
             if (grid.GetGridObject(coordinate) != null)
             {
                 grid.GetGridObject(coordinate).SetOccupied(true);
-                Debug.Log("Tile coordinates: " + coordinate + " " + grid.GetGridObject(coordinate).GetOccupied());
-                //  grid.GetGridObject(coordinate).LogDebug();}
             }
 
         }
     }
+
     public static void SetOccupiedWithCollider(BoxCollider2D boxCollider2D)
     {
         Vector2[] cornerPosition = new Vector2[5];
@@ -92,18 +92,20 @@ public class TowerDefenseGrid : MonoBehaviour
 
         for (int i = 0; i < cornerPosition.Length; i++)
         {
-            grid.GetGridObject(cornerPosition[i]).SetOccupied(true);
+            if (grid.GetGridObject(cornerPosition[i]) != null)
+                grid.GetGridObject(cornerPosition[i]).SetOccupied(true);
         }
 
-        for (int i = 0; i < cornerPosition.Length; i++)
-        {
-            print(grid.GetGridObject(cornerPosition[i]) + " " + grid.GetGridObject(cornerPosition[i]).GetOccupied());
-        }
+        // for (int i = 0; i < cornerPosition.Length; i++)
+        // {
+        //     if (grid.GetGridObject(cornerPosition[i]) != null)
+        //     print(grid.GetGridObject(cornerPosition[i]) + " " + grid.GetGridObject(cornerPosition[i]).GetOccupied());
+        // }
 
-        Debug.Log("Top Left Corner: " + topLeftCorner);
-        Debug.Log("Top Right Corner: " + topRightCorner);
-        Debug.Log("Bottom Left Corner: " + bottomLeftCorner);
-        Debug.Log("Bottom Right Corner: " + bottomRightCorner);
+        // Debug.Log("Top Left Corner: " + topLeftCorner);
+        // Debug.Log("Top Right Corner: " + topRightCorner);
+        // Debug.Log("Bottom Left Corner: " + bottomLeftCorner);
+        // Debug.Log("Bottom Right Corner: " + bottomRightCorner);
     }
 
     public static void SpawnTower()
@@ -153,7 +155,7 @@ public class TDGridNode
 
     public override string ToString()
     {
-        return nodeIndex.ToString() + " \n" + occupied;
+        return occupied.ToString();
     }
 
     public void SetNodeIndex(int index)
