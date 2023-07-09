@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7524740030171301937
+--- !u!1001 &5368668828270743148
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 728979652066835957, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_Name
-      value: Tower Yellow
+      value: Tower Cyan Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 728979652066835957, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2794941374633009467, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_RootOrder
@@ -57,11 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4224669212728093099, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 4224669212728093099, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
-      propertyPath: m_Color.g
-      value: 0.79607844
+      propertyPath: m_Color.r
+      value: 0.5254902
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}

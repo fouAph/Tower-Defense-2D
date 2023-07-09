@@ -14,10 +14,10 @@ public class GameManager : MonoBehaviour
         Singleton = this;
     }
 
-    private void Start()
-    {
+    [SerializeField] GameObject selectedTower;
+    [SerializeField] GameObject[] towerForPreview;
+    [SerializeField] public GameObject selectedPreviewTower;
 
-    }
 
     private void Update()
     {
@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] GameObject selectedTower;
 
     public GameObject GetSelectedTower()
     {

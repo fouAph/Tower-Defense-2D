@@ -9,6 +9,7 @@ public class TowerDefenseGrid : MonoBehaviour
     public static TowerDefenseGrid Singleton;
 
     [SerializeField] Tilemap NotPlaceableTilemap; 
+    
     private void Awake()
     {
         Singleton = this;
