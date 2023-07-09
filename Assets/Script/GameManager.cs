@@ -14,33 +14,33 @@ public class GameManager : MonoBehaviour
         Singleton = this;
     }
 
-    [SerializeField] GameObject selectedTower;
-    [SerializeField] GameObject[] towerForPreview;
-    [SerializeField] public GameObject selectedPreviewTower;
-
+    [SerializeField] GameObject selectedTowerGO;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Vector3 pos = CodeMonkey.Utils.UtilsClass.GetMouseWorldPosition();
-            TDGridNode gridobj = TowerDefenseGrid.grid.GetGridObject(pos);
-            // selectedGrid = gridobj;
-            if (gridobj == null) return;
-            if (gridobj.GetOccupied())
+        if (selectedTowerGO)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                print("Canot Place tower here");
-                return;
+                Vector3 pos = CodeMonkey.Utils.UtilsClass.GetMouseWorldPosition();
+                TDGridNode gridobj = TowerDefenseGrid.grid.GetGridObject(pos);
+                // selectedGrid = gridobj;
+                if (gridobj == null) return;
+
+                /*if (gridobj.GetOccupied())
+                {
+                   
+                    return;
+                }*/
+
+                SpawnTower();
+                gridobj.SetOccupied(true);
+                gridobj.TriggerGridObjectChanged();
             }
-            TowerDefenseGrid.SpawnTower();
-            gridobj.SetOccupied(true);
-            gridobj.TriggerGridObjectChanged();
-        }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             UIManager.Singleton.ClearSelected();
-            selectedTower = null;
+            selectedTowerGO = null;
         }
 
 
@@ -52,14 +52,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    public GameObject GetSelectedTower()
+    private void SpawnTower()
     {
-        return selectedTower;
+        TowerDefenseGrid.SpawnTower();
+    }
+ 
+    public GameObject GetSelectedTowerGO()
+    {
+        return selectedTowerGO;
     }
 
     public void SetSelectedTower(GameObject towerPrefab)
     {
-        selectedTower = towerPrefab;
+        selectedTowerGO = towerPrefab;
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BulletProjectile : MonoBehaviour
+public class BulletProjectile : MonoBehaviour, IPooledObject
 {
     private Enemy enemyTarget;
     private Vector3 targetPos;
@@ -10,7 +10,7 @@ public class BulletProjectile : MonoBehaviour
 
     private void Update()
     {
-        MoveProjectile(enemyTarget, moveSpeed, weaponDamage);
+        MoveProjectile();
     }
 
     public void SetupBullet(Enemy _enemyTarget, float _moveSpeed, int _weaponDamage)
@@ -20,10 +20,10 @@ public class BulletProjectile : MonoBehaviour
         moveSpeed = _moveSpeed;
         weaponDamage = _weaponDamage;
     }
-    private void MoveProjectile(Enemy enemyTransform, float moveSpeed, int weaponDamage)
+    private void MoveProjectile()
     {
         // Calculate the direction from the object's position to the target position
-        Vector3 direction = targetPos - transform.position;
+        Vector3 direction = enemyTarget.transform.position - transform.position;
 
 
         // Calculate the angle in radians
@@ -32,10 +32,10 @@ public class BulletProjectile : MonoBehaviour
         // Set the rotation of the object
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         // Move the projectile towards the target position
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, enemyTarget.transform.position, Time.deltaTime * moveSpeed);
 
         // Recalculate the distance between the projectile and the target position
-        float dist = Vector3.Distance(transform.position, targetPos);
+        float dist = Vector3.Distance(transform.position, enemyTarget.transform.position);
 
         if (dist <= 0.12f)
         {
@@ -46,6 +46,7 @@ public class BulletProjectile : MonoBehaviour
     }
 
     private int damage;
+
     // private void OnCollisionEnter2D(Collision2D other)
     // {
     //     print("hit " + other.collider.name);
@@ -61,5 +62,10 @@ public class BulletProjectile : MonoBehaviour
     public void SetDamage(int value)
     {
         damage = value;
+    }
+
+    public void OnObjectSpawn()
+    {
+        
     }
 }

@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        healthBar = new World_Bar(transform, Vector3.up, Vector3.one, Color.white, Color.red, health, 15);
+        healthBar = new World_Bar(transform, new Vector3(-0.600000024f, 0.699999988f, 0), Vector3.one, Color.white, Color.red, 8, 15);
         // healthBar.
     }
 
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         health -= damage;
         // health = Mathf.Clamp(health, health, 0);
-
+        UpdateHealth();
         if (health == 0)
         {
             gameObject.SetActive(false);

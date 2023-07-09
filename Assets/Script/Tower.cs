@@ -2,22 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
+
 public class Tower : MonoBehaviour
 {
+    public TowerStatsSO towerStatsSO;
     [SerializeField] Transform shootPoint;
     [SerializeField] Transform projectilePrefab;
-    [SerializeField] float projectileMoveSpeed = 5f;
     [SerializeField] LayerMask enemyLayer;
-    [SerializeField] float detectionRadius = 6f;
-    [SerializeField] Enemy enemyTarget;
+    [SerializeField] float projectileMoveSpeed = 5f;
+    [SerializeField] float sensorRadius = 20f;
 
-    [SerializeField] int fireRate = 2;
+    [SerializeField] float fireRate = 2;
     [SerializeField] int weaponDamage = 5;
-    [SerializeField] private const int sensorBuffer = 5;
+
+    private const int sensorBuffer = 5;
     private Collider2D[] results = new Collider2D[sensorBuffer];
+    private Enemy enemyTarget;
     private float lastFired;
 
     private int enemyCount;
+
+    private void Start()
+    {
+        PoolSystem.Singleton.AddObjectToPooledObject(projectilePrefab.gameObject, 50);
+    }
+
+    private void StatSetup()
+    {
+        fireRate = towerStatsSO.fireRate;
+        sensorRadius = towerStatsSO.sensorRadius;
+
+    }
 
     void Update()
     {
@@ -27,9 +42,8 @@ public class Tower : MonoBehaviour
             if (Time.time - lastFired > 1f / fireRate)
             {
                 lastFired = Time.time;
-                GameObject p = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity).gameObject;
+                GameObject p = PoolSystem.Singleton.SpawnFromPool(projectilePrefab.gameObject, shootPoint.position, Quaternion.identity);
                 BulletProjectile bp = p.GetComponent<BulletProjectile>();
-                // bp.SetDamage(weaponDamage);
                 bp.SetupBullet(enemyTarget, projectileMoveSpeed, weaponDamage);
             }
         }
@@ -38,7 +52,7 @@ public class Tower : MonoBehaviour
     public void DetectEnemies()
     {
         // Collider2D[] 
-        enemyCount = Physics2D.OverlapCircleNonAlloc(transform.position, detectionRadius, results, enemyLayer);
+        enemyCount = Physics2D.OverlapCircleNonAlloc(transform.position, sensorRadius, results, enemyLayer);
 
         if (enemyCount > 0)
         {
@@ -46,42 +60,27 @@ public class Tower : MonoBehaviour
         }
     }
 
-    // private IEnumerator MoveProjectile(GameObject p, Vector3 targetPos)
-    // {
-    //     // Calculate the direction from the object's position to the target position
-    //     Vector3 direction = targetPos - p.transform.position;
+    public float GetSensorRadius()
+    {
+        return sensorRadius;
+    }
 
-    //     // Calculate the angle in radians
-    //     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    private void OnMouseEnter()
+    {
+        TowerUpgrade.Singleton.ShowSensorOverlay(this);
+    }
 
-    //     // Set the rotation of the object
-    //     p.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-    //     while (true)
-    //     {
-    //         // Move the projectile towards the target position
-    //         p.transform.position = Vector3.MoveTowards(p.transform.position, targetPos, Time.deltaTime * projectileSpeed);
-
-    //         // Recalculate the distance between the projectile and the target position
-    //         float dist = Vector3.Distance(p.transform.position, targetPos);
-
-    //         if (dist <= 0.12f)
-    //         {
-    //             p.gameObject.SetActive(false);
-    //             enemyTarget.OnDamaged(weaponDamage);
-    //             print(weaponDamage); 
-    //             print("hit");
-    //             break; // Exit the while loop
-    //         }
-
-    //         yield return null;
-    //     }
-    // }
+    private void OnMouseExit()
+    {
+        TowerUpgrade.Singleton.HideSensorOverlay();
+    }
 
     private void OnDrawGizmosSelected()
     {
         // Draw the detection radius in the Scene view
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.DrawWireSphere(transform.position, sensorRadius);
     }
+
+
 }

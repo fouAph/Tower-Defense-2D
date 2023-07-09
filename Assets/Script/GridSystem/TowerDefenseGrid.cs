@@ -115,7 +115,7 @@ public class TowerDefenseGrid : MonoBehaviour
         spawnPosition = ValidateWorldGridPosition(spawnPosition);
         spawnPosition += new Vector3(1, 1, 0) * grid.GetCellSize() * .5f;
 
-        var tower = Instantiate(GameManager.Singleton.GetSelectedTower(), spawnPosition, Quaternion.identity);
+        var tower = PoolSystem.Singleton.SpawnFromPool(GameManager.Singleton.GetSelectedTowerGO(), spawnPosition, Quaternion.identity);
         SetOccupiedWithCollider(tower.GetComponent<BoxCollider2D>());
     }
 

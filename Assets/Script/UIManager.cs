@@ -24,19 +24,23 @@ public class UIManager : MonoBehaviour
 
             selectedTowerItem.SetTowerPreviewPosition(spawnPosition);
 
-            if (TowerDefenseGrid.grid.GetGridObject(spawnPosition) == null || TowerDefenseGrid.grid.GetGridObject(spawnPosition).GetOccupied() == true)
+            if (TowerDefenseGrid.grid.GetGridObject(spawnPosition) == null
+            || TowerDefenseGrid.grid.GetGridObject(spawnPosition).GetOccupied() == true)
             {
                 selectedTowerItem.HideTowerPreview();
+                TowerUpgrade.Singleton.HideSensorOverlay();
             }
-            else{
+            else
+            {
                 selectedTowerItem.ShowTowerPreview();
+                if (selectedTowerItem.towerPreviewPrefab != null)
+                    TowerUpgrade.Singleton.ShowSensorOverlay(selectedTowerItem);
             }
         }
     }
     public void SetSelectedTowerItem(TowerItemUI newTowerItemUI)
     {
-        if (selectedTowerItem)
-            selectedTowerItem.Deselected();
+        ClearSelected();
         selectedTowerItem = newTowerItemUI;
     }
 
@@ -45,6 +49,9 @@ public class UIManager : MonoBehaviour
     {
         if (selectedTowerItem)
             selectedTowerItem.Deselected();
+
+        TowerUpgrade.Singleton.HideSensorOverlay();
+        selectedTowerItem = null;
     }
 
 }
