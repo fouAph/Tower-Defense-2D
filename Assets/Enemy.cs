@@ -2,23 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
-public class Enemy : MonoBehaviour, IDamageable
+
+public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 {
-    [SerializeField] int health = 100;
-    [SerializeField] float moveSpeed = 5f;
+    private const int WORLDBAR_SCALE = 8;
+    [SerializeField] EnemyStatsSO enemyStatsSO;
+    [SerializeField] List<Transform> currentWayPointList = new List<Transform>();
     private World_Bar healthBar;
-    [SerializeField] List<Transform> wayPoints = new List<Transform>();
+
+    private float maxHealth = 100;
+    private float moveSpeed = 5f;
+    private int attackDamage = 2;
     private int currentWayPoint;
+
+    private float currentHealth;
 
     private void Start()
     {
-        healthBar = new World_Bar(transform, new Vector3(-0.600000024f, 0.699999988f, 0), Vector3.one, Color.white, Color.red, 8, 15);
-        // healthBar.
+        healthBar = new World_Bar(transform, new Vector3(-0.600000024f, 0.699999988f, 0), Vector3.one, Color.white, Color.red, WORLDBAR_SCALE, 15);
+        EnemySetup();
     }
 
-    public void UpdateHealth()
+    private void EnemySetup()
     {
-        healthBar.SetSize(health);
+        maxHealth = enemyStatsSO.health;
+        moveSpeed = enemyStatsSO.moveSpeed;
+        attackDamage = enemyStatsSO.attackDamage;
+
+        currentHealth = maxHealth;
+
+    }
+
+    private void UpdateHealth()
+    {
+        float healthPercentage = (float)currentHealth / maxHealth;
+        float healthBarSize = WORLDBAR_SCALE * healthPercentage;
+        print(healthBarSize);
+        healthBar.SetSize(healthBarSize);
     }
 
     private void Update()
@@ -28,16 +48,16 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void MoveToWayPoint()
     {
-        transform.position = Vector3.MoveTowards(transform.position, wayPoints[currentWayPoint].position,
+        transform.position = Vector3.MoveTowards(transform.position, currentWayPointList[currentWayPoint].position,
                                 moveSpeed * Time.deltaTime);
 
-        float dist = Vector3.Distance(transform.position, wayPoints[currentWayPoint].position);
+        float dist = Vector3.Distance(transform.position, currentWayPointList[currentWayPoint].position);
 
         if (dist <= 0.01f)
         {
             currentWayPoint++;
 
-            if (currentWayPoint >= wayPoints.Count)
+            if (currentWayPoint >= currentWayPointList.Count)
             {
                 gameObject.SetActive(false);
             }
@@ -46,15 +66,33 @@ public class Enemy : MonoBehaviour, IDamageable
 
     }
 
+    public List<Transform> GetWayPoints()
+    {
+        return currentWayPointList;
+    }
+
+    public void SetWayPoints(List<Transform> wp)
+    {
+        currentWayPointList.Clear();
+        foreach (var item in wp)
+        {
+            currentWayPointList.Add(item);
+        }
+    }
 
     public void OnDamaged(int damage)
     {
-        health -= damage;
+        currentHealth -= damage;
         // health = Mathf.Clamp(health, health, 0);
         UpdateHealth();
-        if (health == 0)
+        if (currentHealth == 0)
         {
             gameObject.SetActive(false);
         }
+    }
+
+    public void OnObjectSpawn()
+    {
+        EnemySetup();
     }
 }

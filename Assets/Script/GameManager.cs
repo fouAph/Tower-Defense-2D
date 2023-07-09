@@ -52,11 +52,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SpawnTower()
+    public void SpawnTower()
     {
         TowerDefenseGrid.SpawnTower();
     }
- 
+
     public GameObject GetSelectedTowerGO()
     {
         return selectedTowerGO;

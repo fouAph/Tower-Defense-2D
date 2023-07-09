@@ -98,8 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8656d4db1e93243984ec55c28bd37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
-  moveSpeed: 15
+  enemyStatsSO: {fileID: 11400000, guid: ea2eba7f1e695e24da3d3a833c56dac2, type: 2}
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}

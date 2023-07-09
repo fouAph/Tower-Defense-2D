@@ -16,28 +16,19 @@ public class PoolSystem : MonoBehaviour
         Init();
     }
 
-    public List<GameObject> allPooledObject;
+    public List<GameObject> ObjectToPool;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
-
-    [System.Serializable]
-    public class PoolItem
-    {
-        public string tag;
-        // public ObjectPoolType poolType;
-        // public bool useAutoDisable = false;
-        // public float autoDisableAfter = .2f;
-        public GameObject prefab;
-        public Transform parent;
-        public int size;
-        // public bool canExpand;
-        // public bool deactiveWhenImpact;
-    }
 
     public List<PoolItem> poolItems;
 
     public void Init()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
+
+        foreach (var item in ObjectToPool)
+        {
+            AddObjectToPooledObject(item, 10);
+        }
 
         foreach (PoolItem item in poolItems)
         {
@@ -180,7 +171,7 @@ public class PoolSystem : MonoBehaviour
         else return null;
 
     }
- 
+
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, Transform parent = null, bool useLocalTransform = false)
     {
         if (!poolDictionary.ContainsKey(tag))
@@ -262,4 +253,20 @@ public class PoolSystem : MonoBehaviour
 
         return objectToSpawn;
     }
+
+
+    [System.Serializable]
+    public class PoolItem
+    {
+        public string tag;
+        // public ObjectPoolType poolType;
+        // public bool useAutoDisable = false;
+        // public float autoDisableAfter = .2f;
+        public GameObject prefab;
+        public Transform parent;
+        public int size;
+        // public bool canExpand;
+        // public bool deactiveWhenImpact;
+    }
+
 }

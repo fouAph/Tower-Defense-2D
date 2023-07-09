@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TowerStats", menuName = "Tower Defense/TowerUpgrade", order = 0)]
+[CreateAssetMenu(fileName = "TowerStats", menuName = "Tower Defense/TowerStatsSO", order = 0)]
 public class TowerStatsSO : ScriptableObject
 {
     public float fireRate = 3f;
