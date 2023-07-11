@@ -135,18 +135,19 @@ public class GameManager : MonoBehaviour
             currentWave++;
             EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(currentLevelInfo.enemyDatas[currentWave - 1].enemyToSpawnList);
 
-            UIManager.Singleton.LevelSetup();
             print("new wave Spawned");
             StartCoroutine(StartGameCountdown());
         }
+        
+        UIManager.Singleton.LevelSetup();
 
-        if(currentWave == currentLevelInfo.enemyDatas.Length)
+        if (currentWave == currentLevelInfo.enemyDatas.Length)
         {
             print("Level Compeleted");
         }
     }
 
-    
+
 
 }
 public enum GameState { Menu, InGame, GameOver, NotReady, InShop }

@@ -74,6 +74,9 @@ public class UIManager : MonoBehaviour
 
     private void WaveClearPopup()
     {
+        var gm = GameManager.Singleton;
+        string wvClearText = waveClear_TMP.text;
+        waveClear_TMP.text = gm.currentWave != gm.currentLevelInfo.enemyDatas.Length ? wvClearText : "Level Compeleted";
         float startX = waveClear_TMP.transform.position.x;
         float toX = -333f;
         float endX = 1155f;
