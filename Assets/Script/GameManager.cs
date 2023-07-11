@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        OnWaveCompleted += GameManager_OnWaveCompleted;
         LevelSetup();
         StartCoroutine(StartGameCountdown());
     }
@@ -53,11 +54,11 @@ public class GameManager : MonoBehaviour
                 // selectedGrid = gridobj;
                 if (gridobj == null) return;
 
-                /*if (gridobj.GetOccupied())
+                if (gridobj.GetOccupied())
                 {
-                   
+                    CodeMonkey.CMDebug.TextPopupMouse("Cannot Place Tower Here");
                     return;
-                }*/
+                }
 
                 SpawnTower();
                 gridobj.SetOccupied(true);
@@ -130,24 +131,21 @@ public class GameManager : MonoBehaviour
     public void OnWaveCompleted_Invoke()
     {
         OnWaveCompleted?.Invoke(this, EventArgs.Empty);
+
+    }
+
+    private void GameManager_OnWaveCompleted(object sender, EventArgs e)
+    {
         if (currentWave != currentLevelInfo.enemyDatas.Length)
         {
             currentWave++;
             EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(currentLevelInfo.enemyDatas[currentWave - 1].enemyToSpawnList);
 
-            print("new wave Spawned");
             StartCoroutine(StartGameCountdown());
         }
-        
+
         UIManager.Singleton.LevelSetup();
-
-        if (currentWave == currentLevelInfo.enemyDatas.Length)
-        {
-            print("Level Compeleted");
-        }
     }
-
-
 
 }
 public enum GameState { Menu, InGame, GameOver, NotReady, InShop }

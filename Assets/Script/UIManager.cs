@@ -86,8 +86,7 @@ public class UIManager : MonoBehaviour
 
     private void UIManager_OnWaveCompleted(object sender, EventArgs e)
     {
-        WaveClearPopup();
-        print("Wave popup");
+        WaveClearPopup(); 
     }
 
 }
