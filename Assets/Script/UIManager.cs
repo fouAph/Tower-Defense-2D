@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using CodeMonkey.Utils;
 using UnityEngine;
 using TMPro;
+using System;
+
 public class UIManager : MonoBehaviour
 {
     public static UIManager Singleton;
@@ -13,9 +15,15 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TMP_Text levelInfo_TMP;
     [SerializeField] TMP_Text waveLevel_TMP;
+    [SerializeField] TMP_Text waveClear_TMP;
 
     [SerializeField] TowerItemUI[] towerItemUIs;
     private TowerItemUI selectedTowerItem;
+
+    private void Start()
+    {
+        GameManager.Singleton.OnWaveCompleted += UIManager_OnWaveCompleted;
+    }
 
     private void Update()
     {
@@ -62,6 +70,21 @@ public class UIManager : MonoBehaviour
 
         TowerUpgrade.Singleton.HideSensorOverlay();
         selectedTowerItem = null;
+    }
+
+    private void WaveClearPopup()
+    {
+        float startX = waveClear_TMP.transform.position.x;
+        float toX = -333f;
+        float endX = 1155f;
+        LeanTween.moveLocalX(waveClear_TMP.gameObject, toX, .5f)
+        .setOnComplete(() => LeanTween.moveLocalX(waveClear_TMP.gameObject, endX, .5f).setDelay(1f));
+    }
+
+    private void UIManager_OnWaveCompleted(object sender, EventArgs e)
+    {
+        WaveClearPopup();
+        print("Wave popup");
     }
 
 }

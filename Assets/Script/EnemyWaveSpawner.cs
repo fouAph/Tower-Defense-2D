@@ -38,12 +38,9 @@ public class EnemyWaveSpawner : MonoBehaviour
         Enemy enemy = enemyObj.GetComponent<Enemy>();
         enemy.SetWayPoints(wayPoints);
 
-        enemyToSpawn.RemoveAt(0);
+        enemyToSpawn.RemoveAt(0); 
     }
- 
-
-
-
+  
     public void AddEnemyToSpawnList(List<Enemy> enemyList)
     {
         foreach (var item in enemyList)

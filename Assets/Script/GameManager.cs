@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,10 +18,15 @@ public class GameManager : MonoBehaviour
     public LevelInfoDataSO currentLevelInfo;
     public int currentWave = 1;
 
+    public event EventHandler OnWaveCompleted;
+
     public List<Enemy> enemiesAlive = new List<Enemy>();
 
     [SerializeField] CountDownHelper countDownHelper;
     private const int COUNTDOWN_TIMER = 3;
+
+    public float CountdownTimer;
+    float startCountdown;
 
     private void Awake()
     {
@@ -64,13 +70,6 @@ public class GameManager : MonoBehaviour
             selectedTowerGO = null;
         }
 
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Vector3 pos = CodeMonkey.Utils.UtilsClass.GetMouseWorldPosition();
-            TDGridNode gridobj = TowerDefenseGrid.grid.GetGridObject(pos);
-            gridobj.LogDebug();
-        }
     }
 
     private void LevelSetup()
@@ -80,11 +79,9 @@ public class GameManager : MonoBehaviour
         UIManager.Singleton.LevelSetup();
     }
 
-    public float CountdownTimer;
-    float startCountdown;
-
     IEnumerator StartGameCountdown()
     {
+        gameState = GameState.Menu;
         countDownHelper.SetSprite(countDownHelper._3);
         yield return new WaitForSeconds(1);
         countDownHelper.gameObject.SetActive(true);
@@ -124,5 +121,32 @@ public class GameManager : MonoBehaviour
     {
         selectedTowerGO = towerPrefab;
     }
+
+    public bool CheckIfNoEnemyLeft()
+    {
+        return enemiesAlive.Count == 0;
+    }
+
+    public void OnWaveCompleted_Invoke()
+    {
+        OnWaveCompleted?.Invoke(this, EventArgs.Empty);
+        if (currentWave != currentLevelInfo.enemyDatas.Length)
+        {
+            currentWave++;
+            EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(currentLevelInfo.enemyDatas[currentWave - 1].enemyToSpawnList);
+
+            UIManager.Singleton.LevelSetup();
+            print("new wave Spawned");
+            StartCoroutine(StartGameCountdown());
+        }
+
+        if(currentWave == currentLevelInfo.enemyDatas.Length)
+        {
+            print("Level Compeleted");
+        }
+    }
+
+    
+
 }
 public enum GameState { Menu, InGame, GameOver, NotReady, InShop }
