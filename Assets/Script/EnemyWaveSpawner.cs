@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,20 +11,19 @@ public class EnemyWaveSpawner : MonoBehaviour
     }
 
     [SerializeField] Transform spawnPosition;
-    public EnemyWaveLevelSO[] enemyWaveDatas;
-
     [SerializeField] float spawnRate = 1;
-    [SerializeField] List<Enemy> enemyAlive;
-
     [SerializeField] List<Transform> wayPoints = new List<Transform>();
+    [SerializeField] List<Enemy> enemyToSpawn = new List<Enemy>();
 
-    [SerializeField] List<GameObject> enemyObjectsToSpawn = new List<GameObject>();
+    // public event EventHandler onEnemySpawn;
 
     private float lastSpawned;
 
     private void Update()
     {
-        if (enemyObjectsToSpawn.Count > 0)
+        if (GameManager.Singleton.gameState != GameState.InGame) return;
+
+        if (enemyToSpawn.Count > 0)
             if (Time.time - lastSpawned > 1f / spawnRate)
             {
                 lastSpawned = Time.time;
@@ -34,13 +34,22 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        var enemyObj = PoolSystem.Singleton.SpawnFromPool(enemyObjectsToSpawn[0], spawnPosition.position, Quaternion.identity);
+        var enemyObj = PoolSystem.Singleton.SpawnFromPool(enemyToSpawn[0].gameObject, spawnPosition.position, Quaternion.identity);
         Enemy enemy = enemyObj.GetComponent<Enemy>();
         enemy.SetWayPoints(wayPoints);
 
-        enemyObjectsToSpawn.RemoveAt(0);
+        enemyToSpawn.RemoveAt(0);
+    }
+ 
 
 
+
+    public void AddEnemyToSpawnList(List<Enemy> enemyList)
+    {
+        foreach (var item in enemyList)
+        {
+            enemyToSpawn.Add(item);
+        }
     }
 
 }

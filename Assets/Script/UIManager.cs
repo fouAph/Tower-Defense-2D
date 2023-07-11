@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using CodeMonkey.Utils;
 using UnityEngine;
-
+using TMPro;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Singleton;
@@ -11,8 +11,11 @@ public class UIManager : MonoBehaviour
         Singleton = this;
     }
 
+    [SerializeField] TMP_Text levelInfo_TMP;
+    [SerializeField] TMP_Text waveLevel_TMP;
+
     [SerializeField] TowerItemUI[] towerItemUIs;
-    [SerializeField] TowerItemUI selectedTowerItem;
+    private TowerItemUI selectedTowerItem;
 
     private void Update()
     {
@@ -38,12 +41,19 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+    public void LevelSetup()
+    {
+        var gm = GameManager.Singleton;
+        levelInfo_TMP.text = "Level: " + gm.currentLevelInfo.level.ToString();
+        waveLevel_TMP.text = "Wave: " + gm.currentWave.ToString();
+    }
+
     public void SetSelectedTowerItem(TowerItemUI newTowerItemUI)
     {
         ClearSelected();
         selectedTowerItem = newTowerItemUI;
     }
-
 
     public void ClearSelected()
     {
