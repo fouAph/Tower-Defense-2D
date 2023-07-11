@@ -40,6 +40,11 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         PlayAnimationBasedOnTargetDirection(currentWayPointList[currentWayPoint]);
     }
 
+ private void Update()
+    {
+        MoveToWayPoint();
+    }
+
     private void EnemySetup()
     {
         maxHealth = enemyStatsSO.health;
@@ -48,9 +53,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 
         currentHealth = maxHealth;
     }
-
-
-
+ 
     private void PlayAnimation(int stringHash)
     {
         animator.Play(stringHash);
@@ -59,16 +62,10 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
     private void UpdateHealth()
     {
         float healthPercentage = (float)currentHealth / maxHealth;
-        float healthBarSize = WORLDBAR_SCALE * healthPercentage;
-        print(healthBarSize);
+        float healthBarSize = WORLDBAR_SCALE * healthPercentage; 
         healthBar.SetSize(healthBarSize);
     }
-
-    private void Update()
-    {
-        MoveToWayPoint();
-    }
-
+ 
     private void MoveToWayPoint()
     {
         transform.position = Vector3.MoveTowards(transform.position, currentWayPointList[currentWayPoint].position,
@@ -112,8 +109,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
             PlayAnimation(AnimatorHashToIntMoveDown);
 
     }
-
-
+ 
     public List<Transform> GetWayPoints()
     {
         return currentWayPointList;
@@ -135,12 +131,14 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         UpdateHealth();
         if (currentHealth == 0)
         {
+        GameManager.Singleton.enemiesAlive.Remove(this);
             gameObject.SetActive(false);
         }
     }
 
     public void OnObjectSpawn()
     {
+        GameManager.Singleton.enemiesAlive.Add(this);
         EnemySetup();
     }
 }
