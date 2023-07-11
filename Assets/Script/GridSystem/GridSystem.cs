@@ -19,8 +19,9 @@ public class GridSystem<TGridObject>
     private Vector3 originPosition;
     private TGridObject[,] gridArray;
 
+
     public TextMesh[,] debugTextArray;
-    public GridSystem(int width, int height, float cellSize, Vector3 originPosition, Func<GridSystem<TGridObject>, int, int, TGridObject> createGridObject)
+    public GridSystem(int width, int height, float cellSize, Vector3 originPosition, Func<GridSystem<TGridObject>, int, int, TGridObject> createGridObject, bool showDebug)
     {
         this.width = width;
         this.height = height;
@@ -35,7 +36,6 @@ public class GridSystem<TGridObject>
                 gridArray[x, y] = createGridObject(this, x, y);
             }
         }
-        bool showDebug = true;
         if (showDebug)
         {
 
@@ -77,7 +77,7 @@ public class GridSystem<TGridObject>
     {
         return cellSize;
     }
-    
+
     public Vector3 GetWorldCenterPosition(Vector3 worldPosition)
     {
         int x = 0, y = 0;

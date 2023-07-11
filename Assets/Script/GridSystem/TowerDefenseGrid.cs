@@ -7,13 +7,14 @@ using UnityEngine.Tilemaps;
 public class TowerDefenseGrid : MonoBehaviour
 {
     public static TowerDefenseGrid Singleton;
+    [SerializeField] bool showDebug;
 
-    [SerializeField] Tilemap NotPlaceableTilemap; 
-    
+    [SerializeField] Tilemap NotPlaceableTilemap;
+
     private void Awake()
     {
         Singleton = this;
-        grid = new GridSystem<TDGridNode>(width, height, cellSize, transform.position, (GridSystem<TDGridNode> g, int x, int y) => new TDGridNode(g, x, y));
+        grid = new GridSystem<TDGridNode>(width, height, cellSize, transform.position, (GridSystem<TDGridNode> g, int x, int y) => new TDGridNode(g, x, y), showDebug);
     }
     public static GridSystem<TDGridNode> grid;
     [SerializeField] List<GameObject> towerPrefab = new List<GameObject>();
