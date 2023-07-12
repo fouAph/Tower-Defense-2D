@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text waveLevel_TMP;
     [SerializeField] TMP_Text waveClear_TMP;
 
-    [SerializeField] TowerItemUI[] towerItemUIs;
     private TowerItemUI selectedTowerItem;
 
     private void Start()

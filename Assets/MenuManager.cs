@@ -7,13 +7,24 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] LevelSelectItemData selectedLevel;
+
     [SerializeField] Button startButton;
     [SerializeField] Button LeftArrowMenu;
     [SerializeField] Button RightArrowMenu;
 
-    [SerializeField] int currentLevel = 1; 
+    [SerializeField] int currentLevel = 1;
 
     [SerializeField] LevelSelectItemData[] levelSelectItemArray;
+    [SerializeField] Image levelPreviewImage;
+
+    [SerializeField] Menu[] menus;
+    [SerializeField] string currentMenu;
+    [SerializeField] string previousMenu;
+
+    [SerializeField] AudioClip selectMenuClip;
+    [SerializeField] AudioClip exitSelectMenuClip;
+    [SerializeField] AudioClip clickMenuClip;
+
 
     private void Awake()
     {
@@ -22,6 +33,11 @@ public class MenuManager : MonoBehaviour
         startButton.onClick.AddListener(OnStartButton_Click);
         ActiveOrDeactiveArrowButton();
         SetSelectedLevel();
+    }
+    private void Start()
+    {
+        OpenMenu("MainMenu");
+
     }
 
     public void OnStartButton_Click()
@@ -72,11 +88,76 @@ public class MenuManager : MonoBehaviour
 
     private void SetSelectedLevel()
     {
-        selectedLevel = levelSelectItemArray[currentLevel - 1]; 
+        selectedLevel = levelSelectItemArray[currentLevel - 1];
+        levelPreviewImage.sprite = selectedLevel.levelPreviewSprite;
     }
 
     private void LoadLevelScene(int sceneBuildIndex)
     {
         SceneManager.LoadScene(sceneBuildIndex);
+    }
+
+
+    public void OnSelectMenu()
+    {
+        // if (audioPoolSystem && selectMenuClip)
+        {
+            // audioPoolSystem.PlayAudioMenu(selectMenuClip, 1f);
+        }
+    }
+
+    public void OnExitSelectMenu()
+    {
+        // if (audioPoolSystem && exitSelectMenuClip)
+        {
+            // audioPoolSystem.PlayAudioMenu(exitSelectMenuClip, 1f);
+        }
+    }
+
+    public void OnClickMenu()
+    {
+        // if (audioPoolSystem && clickMenuClip)
+        {
+            // audioPoolSystem.PlayAudioMenu(clickMenuClip, 1f);
+        }
+    }
+
+    public void OpenMenu(string menuName)
+    {
+        for (int i = 0; i < menus.Length; i++)
+        {
+            if (menus[i].menuName == menuName)
+            {
+                previousMenu = currentMenu;
+                menus[i].Open();
+                currentMenu = menus[i].menuName;
+            }
+            else
+            {
+                menus[i].Close();
+            }
+        }
+    }
+
+    public void OpenMenu(Menu menu)
+    {
+        for (int i = 0; i < menus.Length; i++)
+        {
+            if (menus[i].menuName == menu.menuName)
+            {
+                previousMenu = currentMenu;
+                menus[i].Open();
+                currentMenu = menus[i].menuName;
+            }
+            else
+            {
+                menus[i].Close();
+            }
+        }
+    }
+
+    public void OnBackButton_Click()
+    {
+        OpenMenu(previousMenu);
     }
 }

@@ -22,14 +22,15 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
     private int AnimatorHashToIntMoveRight;
     private int AnimatorHashToIntMoveUp;
     private int AnimatorHashToIntMoveDown;
-
+    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
-        healthBar = new World_Bar(transform, new Vector3(-0.219999999f, 0.300000012f, 0), Vector3.one, Color.white, Color.red, WORLDBAR_SCALE, 15);
+        healthBar = new World_Bar(transform, new Vector3(-0.219999999f, 0.300000012f, 0), Vector3.one, Color.white, Color.red, WORLDBAR_SCALE, 50);
 
         AnimatorHashToIntMoveUp = Animator.StringToHash("MoveUp");
         AnimatorHashToIntMoveDown = Animator.StringToHash("MoveDown");
@@ -53,6 +54,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         attackDamage = enemyStatsSO.attackDamage;
 
         currentHealth = maxHealth;
+        currentWayPoint = 0;
     }
 
     private void PlayAnimation(int stringHash)
@@ -76,13 +78,19 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 
         if (dist <= 0.01f)
         {
-            currentWayPoint++;
-            PlayAnimationBasedOnTargetDirection(currentWayPointList[currentWayPoint]);
 
-            if (currentWayPoint >= currentWayPointList.Count)
+            if (currentWayPoint < currentWayPointList.Count)
             {
-                gameObject.SetActive(false);
+                currentWayPoint++;
+                if (currentWayPoint == currentWayPointList.Count)
+                {
+                    //TODO When Arrived, Damage The Player (Decrease player Health)
+                    gameObject.SetActive(false);
+                    return;
+                }
             }
+
+            PlayAnimationBasedOnTargetDirection(currentWayPointList[currentWayPoint]);
         }
     }
 
@@ -95,19 +103,37 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 
         //Right Direction
         if (angle > -45 && angle <= 45)
+        {
             PlayAnimation(AnimatorHashToIntMoveRight);
+            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
+        }
 
         //Up Direction
         else if (angle > 45 && angle <= 135)
+        {
+            spriteRenderer.flipY = true;
+            spriteRenderer.flipX = false;
             PlayAnimation(AnimatorHashToIntMoveUp);
 
+
+        }
         //Left Direction
         else if (angle > 135 || angle <= -135)
+        {
+            spriteRenderer.flipX = false;
+            spriteRenderer.flipY = false;
             PlayAnimation(AnimatorHashToIntMoveLeft);
 
+
+        }
         //Right Direction
         else
+        {
+            spriteRenderer.flipY = false;
+            spriteRenderer.flipX = false;
             PlayAnimation(AnimatorHashToIntMoveDown);
+        }
 
     }
 

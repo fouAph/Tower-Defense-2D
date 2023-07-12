@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   levelBuildIndex: 1
+  levelPreviewSprite: {fileID: 21300000, guid: ae2722464f2c5fa4ebd1f148d9f3f1b5, type: 3}

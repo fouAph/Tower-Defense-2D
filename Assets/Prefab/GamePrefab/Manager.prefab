@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1514827546415441620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1514827546415441622}
+  - component: {fileID: 1514827546415441623}
+  - component: {fileID: 1514827546415441617}
+  - component: {fileID: 1514827546415441616}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1514827546415441622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514827546415441620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 85.55507, y: -24.572998, z: 0.5975066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1514827546415441623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514827546415441620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124da76fcdfbdda48aefe12e5df80aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 0
+  coin: 500
+  currentLevelInfo: {fileID: 11400000, guid: f484738e8eeaea94798e6b7b7e0f842d, type: 2}
+  currentWave: 1
+  enemiesAlive: []
+  countDownHelper: {fileID: 0}
+  CountdownTimer: 3
+  selectedTowerGO: {fileID: 0}
+--- !u!114 &1514827546415441617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514827546415441620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0c4200c2876a0468e9522a155d76ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectToPool:
+  - {fileID: 1088491182344546324, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+  - {fileID: 2644803929063640597, guid: d9f76db57da6c9241a274fe465378804, type: 3}
+  - {fileID: 3543900818468734686, guid: e7bb16d175209bf40ad4a713eee40968, type: 3}
+  - {fileID: 3862918478888752972, guid: f10f224d80273f44ea668985186bb759, type: 3}
+  - {fileID: 4655751125535044505, guid: 1d0e9c1a4a1a8ca4fa725fb0b074cc60, type: 3}
+  - {fileID: 3958299919278056627, guid: 6acb43e7e29876541896b541019b72c1, type: 3}
+  - {fileID: 7093420175116711364, guid: 197e9ab783e211c4995663af724030f9, type: 3}
+  - {fileID: 728979652066835957, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
+  poolItems: []
+--- !u!114 &1514827546415441616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514827546415441620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37787fb6bf5e4e4cb80a60fa151cbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPosition: {fileID: 0}
+  spawnRate: 0.5
+  wayPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyToSpawn: []
