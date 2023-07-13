@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
         Singleton = this;
     }
 
+    [SerializeField] TMP_Text coin_TMP;
     [SerializeField] TMP_Text levelInfo_TMP;
     [SerializeField] TMP_Text waveLevel_TMP;
     [SerializeField] TMP_Text waveClear_TMP;
@@ -22,6 +23,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         GameManager.Singleton.OnWaveCompleted += UIManager_OnWaveCompleted;
+        RefreshCoinUI();
     }
 
     private void Update()
@@ -52,8 +54,13 @@ public class UIManager : MonoBehaviour
     public void LevelSetup()
     {
         var gm = GameManager.Singleton;
-        levelInfo_TMP.text = "Level: " + gm.currentLevelInfo.level.ToString();
+        levelInfo_TMP.text = "Level: " + gm.levelSetting.level.ToString();
         waveLevel_TMP.text = "Wave: " + gm.currentWave.ToString();
+    }
+
+    public void RefreshCoinUI()
+    {
+        coin_TMP.text = "$" + GameManager.Singleton.GetCoin();
     }
 
     public void SetSelectedTowerItem(TowerItemUI newTowerItemUI)
@@ -75,7 +82,7 @@ public class UIManager : MonoBehaviour
     {
         var gm = GameManager.Singleton;
         string wvClearText = waveClear_TMP.text;
-        waveClear_TMP.text = gm.currentWave != gm.currentLevelInfo.enemyDatas.Length ? wvClearText : "Level Compeleted";
+        waveClear_TMP.text = gm.currentWave != gm.levelSetting.enemyDatas.Length ? wvClearText : "Level Compeleted";
         float startX = waveClear_TMP.transform.position.x;
         float toX = -333f;
         float endX = 1155f;
@@ -85,7 +92,7 @@ public class UIManager : MonoBehaviour
 
     private void UIManager_OnWaveCompleted(object sender, EventArgs e)
     {
-        WaveClearPopup(); 
+        WaveClearPopup();
     }
 
 }

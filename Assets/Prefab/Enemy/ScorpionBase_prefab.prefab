@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 16
   m_Sprite: {fileID: -1889884378, guid: 077585657eaf6864c8f738a38a3a06ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStatsSO: {fileID: 11400000, guid: ea2eba7f1e695e24da3d3a833c56dac2, type: 2}
-  currentWayPointList: []
+  hitVFXPrefab: {fileID: 7120798221871322313, guid: b916873db28e1c64da5644d7f9d3fc4d, type: 3}
 --- !u!61 &3543900818468734661
 BoxCollider2D:
   m_ObjectHideFlags: 0

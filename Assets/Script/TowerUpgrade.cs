@@ -21,7 +21,7 @@ public class TowerUpgrade : MonoBehaviour
     {
         tower = _tower;
         UpdateSensorOverlay(_tower.towerStatsSO);
-        transform.localPosition = _tower.transform.position;
+        transform.localPosition = _tower.transform.position + tower.GetSensorOffset();
         sensorOverlay.gameObject.SetActive(true);
     }
 
@@ -29,7 +29,7 @@ public class TowerUpgrade : MonoBehaviour
     {
         TowerStatsSO towerStatsSO = towerItemUI.towerStatsSO;
         UpdateSensorOverlay(towerStatsSO);
-        transform.localPosition = towerItemUI.towerPreviewPrefab.transform.position;
+        transform.localPosition = towerItemUI.towerPreviewPrefab.transform.position + towerItemUI.towerPrefab.GetSensorOffset();
         sensorOverlay.gameObject.SetActive(true);
 
     }

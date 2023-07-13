@@ -9,8 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68d9d29d76c1cd409ca820400ea21a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 23d78d30fb05248468464d9387c8cdd6, type: 3}
   m_Name: Level 2
   m_EditorClassIdentifier: 
   levelBuildIndex: 2
+  level: 2
+  isUnlocked: 0
   levelPreviewSprite: {fileID: 21300000, guid: f262257a5eee7544f9744bca9ae9435d, type: 3}
+  enemyDatas:
+  - waveName: Wave 1
+    enemyToSpawnList:
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+  - waveName: Wave 2
+    enemyToSpawnList:
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}
+    - {fileID: 1088491182344546315, guid: d1e8f216218ecca4aa3141e556dcbbd3, type: 3}

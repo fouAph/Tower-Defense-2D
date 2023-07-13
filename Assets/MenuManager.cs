@@ -6,16 +6,15 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] LevelSelectItemData selectedLevel;
+    [SerializeField] LevelSettingSO selectedLevel;
 
     [SerializeField] Button startButton;
     [SerializeField] Button LeftArrowMenu;
     [SerializeField] Button RightArrowMenu;
 
-    [SerializeField] int currentLevel = 1;
-
-    [SerializeField] LevelSelectItemData[] levelSelectItemArray;
+    [SerializeField] LevelSettingSO[] levelSettingsArray;
     [SerializeField] Image levelPreviewImage;
+    [SerializeField] GameObject lockPanel;
 
     [SerializeField] Menu[] menus;
     [SerializeField] string currentMenu;
@@ -24,6 +23,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] AudioClip selectMenuClip;
     [SerializeField] AudioClip exitSelectMenuClip;
     [SerializeField] AudioClip clickMenuClip;
+
+    private int currentLevel = 1;
 
 
     private void Awake()
@@ -64,7 +65,7 @@ public class MenuManager : MonoBehaviour
     private void ActiveOrDeactiveArrowButton()
     {
         //For Left Button
-        if (currentLevel + 1 <= levelSelectItemArray.Length)
+        if (currentLevel + 1 <= levelSettingsArray.Length)
         {
             RightArrowMenu.gameObject.SetActive(true);
         }
@@ -75,7 +76,7 @@ public class MenuManager : MonoBehaviour
         }
 
         //For Right Button
-        if (currentLevel + 1 > levelSelectItemArray.Length)
+        if (currentLevel + 1 > levelSettingsArray.Length)
         {
             RightArrowMenu.gameObject.SetActive(false);
         }
@@ -88,15 +89,21 @@ public class MenuManager : MonoBehaviour
 
     private void SetSelectedLevel()
     {
-        selectedLevel = levelSelectItemArray[currentLevel - 1];
+        selectedLevel = levelSettingsArray[currentLevel - 1];
         levelPreviewImage.sprite = selectedLevel.levelPreviewSprite;
+
+        if (selectedLevel.IsUnlocked() == false)
+            lockPanel.SetActive(true);
+        else
+            lockPanel.SetActive(false);
+
+        startButton.gameObject.SetActive(selectedLevel.IsUnlocked());
     }
 
     private void LoadLevelScene(int sceneBuildIndex)
     {
         SceneManager.LoadScene(sceneBuildIndex);
     }
-
 
     public void OnSelectMenu()
     {

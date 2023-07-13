@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class TowerItemUI : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject towerPrefab;
+    public Tower towerPrefab;
     public GameObject towerPreviewPrefab;
     public TowerStatsSO towerStatsSO;
     [SerializeField] GameObject itemHighlightImage;
@@ -27,8 +27,8 @@ public class TowerItemUI : MonoBehaviour, IPointerClickHandler
     public void Selected(TowerItemUI towerItemUI)
     {
         GameObject currentTower = GameManager.Singleton.GetSelectedTowerGO();
-        currentTower = towerPrefab ? towerPrefab : null;
-        GameManager.Singleton.SetSelectedTower(towerPrefab);
+        currentTower = towerPrefab.gameObject ? towerPrefab.gameObject : null;
+        GameManager.Singleton.SetSelectedTower(towerPrefab.gameObject);
         UIManager.Singleton.SetSelectedTowerItem(towerItemUI);
         itemHighlightImage.SetActive(true);
         ShowTowerPreview();
@@ -36,7 +36,7 @@ public class TowerItemUI : MonoBehaviour, IPointerClickHandler
 
     public void InitiateTowerPreview()
     {
-        towerPreviewPrefab = towerPreviewPrefab ? Instantiate(towerPreviewPrefab) : Instantiate(towerPrefab);
+        towerPreviewPrefab = towerPreviewPrefab ? Instantiate(towerPreviewPrefab) : Instantiate(towerPrefab.gameObject);
     }
 
     private void AddTowerPrefabToPool()

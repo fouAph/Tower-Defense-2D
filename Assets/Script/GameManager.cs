@@ -9,13 +9,9 @@ public class GameManager : MonoBehaviour
     public GameState gameState = GameState.Menu;
     [SerializeField]
     private int coin = 500;
-    public int Coin
-    {
-        get { return coin; }
-        private set { coin = value; }
-    }
+
     // [SerializeField] List<LevelInfoDataSO> levelInfoDataList = new List<LevelInfoDataSO>();
-    public LevelInfoDataSO currentLevelInfo;
+    public LevelSettingSO levelSetting;
     public int currentWave = 1;
 
     public event EventHandler OnWaveCompleted;
@@ -75,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void LevelSetup()
     {
-        EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(currentLevelInfo.enemyDatas[currentWave - 1].enemyToSpawnList);
+        EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(levelSetting.enemyDatas[currentWave - 1].enemyToSpawnList);
         countDownHelper.gameObject.SetActive(true);
         UIManager.Singleton.LevelSetup();
     }
@@ -84,7 +80,7 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.Menu;
         countDownHelper.SetSprite(countDownHelper._3);
-        yield return new WaitForSeconds(1);
+        // yield return new WaitForSeconds(1);
         countDownHelper.gameObject.SetActive(true);
         startCountdown = CountdownTimer;
         // AudioPoolSystem.Singleton.PlayShootAudio(countDownHelper.countdownClip);
@@ -112,16 +108,33 @@ public class GameManager : MonoBehaviour
     {
         TowerDefenseGrid.SpawnTower();
     }
-
+    #region Getter And Setter
     public GameObject GetSelectedTowerGO()
     {
         return selectedTowerGO;
+    }
+
+    public int GetCoin()
+    {
+        return coin;
+    }
+
+    public void AddCoin(int value)
+    {
+        coin += value;
     }
 
     public void SetSelectedTower(GameObject towerPrefab)
     {
         selectedTowerGO = towerPrefab;
     }
+    #endregion
+
+    public bool CanBuy(int price)
+    {
+        return coin >= price;
+    }
+
 
     public bool CheckIfNoEnemyLeft()
     {
@@ -136,10 +149,10 @@ public class GameManager : MonoBehaviour
 
     private void GameManager_OnWaveCompleted(object sender, EventArgs e)
     {
-        if (currentWave != currentLevelInfo.enemyDatas.Length)
+        if (currentWave != levelSetting.enemyDatas.Length)
         {
             currentWave++;
-            EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(currentLevelInfo.enemyDatas[currentWave - 1].enemyToSpawnList);
+            EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(levelSetting.enemyDatas[currentWave - 1].enemyToSpawnList);
 
             StartCoroutine(StartGameCountdown());
         }

@@ -111,10 +111,11 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  projectileMoveSpeed: 50
-  sensorRadius: 15
+  sensorRadius: 17.7
+  sensorOffset: {x: 0, y: 4.62, z: 0}
   fireRate: 2
   weaponDamage: 1
+  projectileMoveSpeed: 50
 --- !u!1 &2753911359289916813
 GameObject:
   m_ObjectHideFlags: 0

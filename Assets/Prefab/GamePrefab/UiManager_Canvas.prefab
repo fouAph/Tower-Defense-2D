@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f7f8378a4ac0a44bf1f7d7fc8570ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 4655751125535044505, guid: 1d0e9c1a4a1a8ca4fa725fb0b074cc60, type: 3}
+  towerPrefab: {fileID: 4971992528239913503, guid: 6acb43e7e29876541896b541019b72c1, type: 3}
   towerPreviewPrefab: {fileID: 3105531557228552801, guid: 75a0ef48dab09e9458f8ab243e4daa4a, type: 3}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 9099328420443451521}
@@ -1320,7 +1320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f7f8378a4ac0a44bf1f7d7fc8570ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 7093420175116711364, guid: 197e9ab783e211c4995663af724030f9, type: 3}
+  towerPrefab: {fileID: 1269522515736132456, guid: 197e9ab783e211c4995663af724030f9, type: 3}
   towerPreviewPrefab: {fileID: 6389017534735936332, guid: a94ef1b671b2df546b3590e17ada61b9, type: 3}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 9099328418602446049}
@@ -1906,7 +1906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f7f8378a4ac0a44bf1f7d7fc8570ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 3958299919278056627, guid: 6acb43e7e29876541896b541019b72c1, type: 3}
+  towerPrefab: {fileID: 3707070429513415989, guid: 1d0e9c1a4a1a8ca4fa725fb0b074cc60, type: 3}
   towerPreviewPrefab: {fileID: 5430846850413263557, guid: 27f20a4841a9bca43a57e2bd8302d2e6, type: 3}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 9099328420577681191}
@@ -2198,7 +2198,7 @@ GameObject:
   - component: {fileID: 9099328420281953590}
   - component: {fileID: 9099328420281953586}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UiManager_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2304,10 +2304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d674b6f1d888dd4b85d28330150f238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin_TMP: {fileID: 9099328419612740023}
   levelInfo_TMP: {fileID: 9099328420470179342}
   waveLevel_TMP: {fileID: 9099328419132384927}
   waveClear_TMP: {fileID: 9099328418676952213}
-  towerItemUIs: []
 --- !u!1 &9099328420298511560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2476,7 +2476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f7f8378a4ac0a44bf1f7d7fc8570ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 728979652066835957, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
+  towerPrefab: {fileID: 8787507146180408153, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
   towerPreviewPrefab: {fileID: 1490639794994129777, guid: 86795cfc31859a0409589d8445cf4944, type: 3}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 9099328418562500188}
@@ -2848,7 +2848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 18.599976, y: -86.9}
+  m_AnchoredPosition: {x: 18.599854, y: -86.900024}
   m_SizeDelta: {x: 252.479, y: 63.28601}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &9099328420470179343

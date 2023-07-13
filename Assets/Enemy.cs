@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 {
     private const int WORLDBAR_SCALE = 14;
     [SerializeField] EnemyStatsSO enemyStatsSO;
-    [SerializeField] List<Transform> currentWayPointList = new List<Transform>();
+    [SerializeField] GameObject hitVFXPrefab;
+    private List<Transform> currentWayPointList = new List<Transform>();
     private World_Bar healthBar;
 
     private float maxHealth = 100;
@@ -38,6 +39,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         AnimatorHashToIntMoveRight = Animator.StringToHash("MoveRight");
 
         EnemySetup();
+        PoolSystem.Singleton.AddObjectToPooledObject(hitVFXPrefab, 15);
 
         PlayAnimationBasedOnTargetDirection(currentWayPointList[currentWayPoint]);
     }
@@ -156,14 +158,22 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         currentHealth -= damage;
         // health = Mathf.Clamp(health, health, 0);
         UpdateHealth();
+        PoolSystem.Singleton.SpawnFromPool(hitVFXPrefab, transform.position, Quaternion.identity, transform);
         if (currentHealth == 0)
         {
+            AddCoinReward();
+            UIManager.Singleton.RefreshCoinUI();
             GameManager.Singleton.enemiesAlive.Remove(this);
             gameObject.SetActive(false);
             if (GameManager.Singleton.CheckIfNoEnemyLeft())
                 GameManager.Singleton.OnWaveCompleted_Invoke();
 
         }
+    }
+
+    private void AddCoinReward()
+    {
+        GameManager.Singleton.AddCoin(enemyStatsSO.coinReward);
     }
 
     public void OnObjectSpawn()

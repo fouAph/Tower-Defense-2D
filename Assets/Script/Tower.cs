@@ -9,11 +9,13 @@ public class Tower : MonoBehaviour
     [SerializeField] Transform shootPoint;
     [SerializeField] Transform projectilePrefab;
     [SerializeField] LayerMask enemyLayer;
-    [SerializeField] float projectileMoveSpeed = 5f;
+
     [SerializeField] float sensorRadius = 20f;
+    [SerializeField] Vector3 sensorOffset;
 
     [SerializeField] float fireRate = 2;
     [SerializeField] int weaponDamage = 5;
+    [SerializeField] float projectileMoveSpeed = 5f;
 
     private const int sensorBuffer = 5;
     private Collider2D[] results = new Collider2D[sensorBuffer];
@@ -52,7 +54,7 @@ public class Tower : MonoBehaviour
     public void DetectEnemies()
     {
         // Collider2D[] 
-        enemyCount = Physics2D.OverlapCircleNonAlloc(transform.position, sensorRadius, results, enemyLayer);
+        enemyCount = Physics2D.OverlapCircleNonAlloc(transform.position + sensorOffset, sensorRadius, results, enemyLayer);
 
         if (enemyCount > 0)
         {
@@ -79,8 +81,11 @@ public class Tower : MonoBehaviour
     {
         // Draw the detection radius in the Scene view
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sensorRadius);
+        Gizmos.DrawWireSphere(transform.position + sensorOffset, sensorRadius);
     }
 
-
+    public Vector3 GetSensorOffset()
+    {
+        return sensorOffset;
+    }
 }
