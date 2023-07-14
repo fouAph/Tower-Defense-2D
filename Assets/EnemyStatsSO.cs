@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyStatsSO : ScriptableObject
 {
     public string enemyName;
-    public int health = 100;
+    public int maxHealth = 100;
     public float moveSpeed = 5f;
     public int attackDamage = 2;
 

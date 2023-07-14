@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 
     private void EnemySetup()
     {
-        maxHealth = enemyStatsSO.health;
+        maxHealth = enemyStatsSO.maxHealth;
         moveSpeed = enemyStatsSO.moveSpeed;
         attackDamage = enemyStatsSO.attackDamage;
 
@@ -159,7 +159,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         // health = Mathf.Clamp(health, health, 0);
         UpdateHealth();
         PoolSystem.Singleton.SpawnFromPool(hitVFXPrefab, transform.position, Quaternion.identity, transform);
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             AddCoinReward();
             UIManager.Singleton.RefreshCoinUI();
@@ -180,5 +180,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
     {
         GameManager.Singleton.enemiesAlive.Add(this);
         EnemySetup();
+
+        // UpdateHealth();
     }
 }

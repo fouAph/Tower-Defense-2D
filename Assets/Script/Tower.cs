@@ -10,6 +10,8 @@ public class Tower : MonoBehaviour
     [SerializeField] Transform projectilePrefab;
     [SerializeField] LayerMask enemyLayer;
 
+    [SerializeField] int currentTowerLevel = 1;
+
     [SerializeField] float sensorRadius = 20f;
     [SerializeField] Vector3 sensorOffset;
 
@@ -18,6 +20,7 @@ public class Tower : MonoBehaviour
     [SerializeField] float projectileMoveSpeed = 5f;
 
     private const int sensorBuffer = 5;
+    [SerializeField] SpriteRenderer towerSpriteRenderer;
     private Collider2D[] results = new Collider2D[sensorBuffer];
     private Enemy enemyTarget;
     private float lastFired;
@@ -27,13 +30,15 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         PoolSystem.Singleton.AddObjectToPooledObject(projectilePrefab.gameObject, 50);
+        towerSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        towerStatsSO.SetTowerSprite(towerSpriteRenderer, currentTowerLevel);
     }
 
     private void StatSetup()
     {
         fireRate = towerStatsSO.fireRate;
         sensorRadius = towerStatsSO.sensorRadius;
-
     }
 
     void Update()
@@ -67,16 +72,21 @@ public class Tower : MonoBehaviour
         return sensorRadius;
     }
 
-    private void OnMouseEnter()
+    private void OnMouseDown()
     {
+
         TowerUpgrade.Singleton.ShowSensorOverlay(this);
     }
 
-    private void OnMouseExit()
-    {
-        TowerUpgrade.Singleton.HideSensorOverlay();
-    }
+    /*private void OnMouseEnter()
+     {
+         TowerUpgrade.Singleton.ShowSensorOverlay(this);
+     }*/
 
+    /*  private void OnMouseExit()
+     {
+         TowerUpgrade.Singleton.HideSensorOverlay();
+     }*/
     private void OnDrawGizmosSelected()
     {
         // Draw the detection radius in the Scene view
@@ -87,5 +97,19 @@ public class Tower : MonoBehaviour
     public Vector3 GetSensorOffset()
     {
         return sensorOffset;
+    }
+
+    public void UpgradeTower()
+    {
+        currentTowerLevel++;
+        fireRate += towerStatsSO.towerStatsUpgrades[currentTowerLevel - 1].fireRateUpgrade;
+        sensorRadius += towerStatsSO.towerStatsUpgrades[currentTowerLevel - 1].sensorRadiusUpgrade;
+        weaponDamage += towerStatsSO.towerStatsUpgrades[currentTowerLevel - 1].weaponDamageUpgrade;
+        towerStatsSO.SetTowerSprite(towerSpriteRenderer, currentTowerLevel);
+    }
+
+    public bool CheckIfMaxUpgrade()
+    {
+        return currentTowerLevel == towerStatsSO.towerStatsUpgrades.Length;
     }
 }
