@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5c44cfc8a800c41992b9c41f6b5852, type: 3}
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
-  health: 5
+  enemyName: 
+  maxHealth: 5
   moveSpeed: 10.22
   attackDamage: 2
+  coinReward: 100

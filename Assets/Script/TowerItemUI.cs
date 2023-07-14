@@ -26,9 +26,9 @@ public class TowerItemUI : MonoBehaviour, IPointerClickHandler
 
     public void Selected(TowerItemUI towerItemUI)
     {
-        GameObject currentTower = GameManager.Singleton.GetSelectedTowerGO();
-        currentTower = towerPrefab.gameObject ? towerPrefab.gameObject : null;
-        GameManager.Singleton.SetSelectedTower(towerPrefab.gameObject);
+        Tower currentTower = GameManager.Singleton.GetSelectedTowerGO();
+        currentTower = towerPrefab ? towerPrefab : null;
+        GameManager.Singleton.SetSelectedTower(towerPrefab);
         UIManager.Singleton.SetSelectedTowerItem(towerItemUI);
         itemHighlightImage.SetActive(true);
         ShowTowerPreview();

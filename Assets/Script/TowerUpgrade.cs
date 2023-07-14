@@ -9,34 +9,39 @@ public class TowerUpgrade : MonoBehaviour
     }
 
     [SerializeField] GameObject sensorOverlay;
-    [SerializeField] private Tower tower;
     [SerializeField] Button_Sprite upgradeSpriteButton;
     [SerializeField] Button_Sprite deleteSpriteButton;
+    
+     private Tower tower;
 
     private void Start()
     {
         upgradeSpriteButton.ClickFunc = UpgradeTower;
     }
 
-
-    public void UpdateSensorOverlay(TowerStatsSO towerStatsSO)
+    public void UpdateSensorOverlayForPreview(TowerStatsSO towerStatsSO)
     {
         sensorOverlay.transform.localScale = Vector2.one * towerStatsSO.sensorRadius * 2;
+    }
+
+    public void UpdateSensorOverlay(Tower _tower)
+    {
+        sensorOverlay.transform.localScale = Vector2.one * _tower.GetSensorRadius() * 2;
     }
 
     public void ShowSensorOverlay(Tower _tower)
     {
         tower = _tower;
-        UpdateSensorOverlay(_tower.towerStatsSO);
+        UpdateSensorOverlay(_tower);
         transform.localPosition = _tower.transform.position + tower.GetSensorOffset();
         sensorOverlay.gameObject.SetActive(true);
         ShowUpgradeButton();
     }
 
-    public void ShowSensorOverlay(TowerItemUI towerItemUI)
+    public void ShowSensorOverlayForPreview(TowerItemUI towerItemUI)
     {
         TowerStatsSO towerStatsSO = towerItemUI.towerStatsSO;
-        UpdateSensorOverlay(towerStatsSO);
+        UpdateSensorOverlayForPreview(towerStatsSO);
         transform.localPosition = towerItemUI.towerPreviewPrefab.transform.position + towerItemUI.towerPrefab.GetSensorOffset();
         sensorOverlay.gameObject.SetActive(true);
         HideUpgradeButton();
@@ -64,12 +69,20 @@ public class TowerUpgrade : MonoBehaviour
 
     private void UpgradeTower()
     {
+        if (!tower.CanUpgradeTower())
+        {
+            CodeMonkey.CMDebug.TextPopupMouse("Not Enough Coin To Upgrade ");
+            return;
+        }
+
+        GameManager.Singleton.SubstractCoin(tower.towerStatsSO.towerStatsUpgrades[tower.GetCurrentTowerLevel()].upgradePrice);
+        UIManager.Singleton.UpdateCoinUI();
         tower.UpgradeTower();
         if (tower.CheckIfMaxUpgrade())
         {
             upgradeSpriteButton.gameObject.SetActive(false);
         }
-        UpdateSensorOverlay(tower.towerStatsSO);
+        UpdateSensorOverlay(tower);
         print("tower " + tower.name);
     }
 

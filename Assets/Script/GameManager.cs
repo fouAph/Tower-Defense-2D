@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         Singleton = this;
     }
 
-    [SerializeField] GameObject selectedTowerGO;
+    [SerializeField] Tower selectedTower;
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameState != GameState.InGame) return;
 
-        if (selectedTowerGO)
+        if (selectedTower)
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Vector3 pos = CodeMonkey.Utils.UtilsClass.GetMouseWorldPosition();
@@ -56,15 +56,24 @@ public class GameManager : MonoBehaviour
                     return;
                 }
 
+                if (!selectedTower.CanBuyTower())
+                {
+                    CodeMonkey.CMDebug.TextPopupMouse("Not Enough Coin");
+                    return;
+                }
+
                 SpawnTower();
+
                 gridobj.SetOccupied(true);
                 gridobj.TriggerGridObjectChanged();
+               SubstractCoin(selectedTower.towerStatsSO.towerPrice);
+                UIManager.Singleton.UpdateCoinUI();
             }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             UIManager.Singleton.ClearSelected();
-            selectedTowerGO = null;
+            selectedTower = null;
         }
 
     }
@@ -109,9 +118,9 @@ public class GameManager : MonoBehaviour
         TowerDefenseGrid.SpawnTower();
     }
     #region Getter And Setter
-    public GameObject GetSelectedTowerGO()
+    public Tower GetSelectedTowerGO()
     {
-        return selectedTowerGO;
+        return selectedTower;
     }
 
     public int GetCoin()
@@ -124,9 +133,14 @@ public class GameManager : MonoBehaviour
         coin += value;
     }
 
-    public void SetSelectedTower(GameObject towerPrefab)
+    public void SubstractCoin(int value)
     {
-        selectedTowerGO = towerPrefab;
+        coin -= value;
+    }
+
+    public void SetSelectedTower(Tower towerPrefab)
+    {
+        selectedTower = towerPrefab;
     }
     #endregion
 

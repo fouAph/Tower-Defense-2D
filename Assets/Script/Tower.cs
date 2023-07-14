@@ -20,7 +20,7 @@ public class Tower : MonoBehaviour
     [SerializeField] float projectileMoveSpeed = 5f;
 
     private const int sensorBuffer = 5;
-    [SerializeField] SpriteRenderer towerSpriteRenderer;
+    private SpriteRenderer towerSpriteRenderer;
     private Collider2D[] results = new Collider2D[sensorBuffer];
     private Enemy enemyTarget;
     private float lastFired;
@@ -49,11 +49,16 @@ public class Tower : MonoBehaviour
             if (Time.time - lastFired > 1f / fireRate)
             {
                 lastFired = Time.time;
-                GameObject p = PoolSystem.Singleton.SpawnFromPool(projectilePrefab.gameObject, shootPoint.position, Quaternion.identity);
-                BulletProjectile bp = p.GetComponent<BulletProjectile>();
-                bp.SetupBullet(enemyTarget, projectileMoveSpeed, weaponDamage);
+                FireBullet();
             }
         }
+    }
+
+    private void FireBullet()
+    {
+        GameObject p = PoolSystem.Singleton.SpawnFromPool(projectilePrefab.gameObject, shootPoint.position, Quaternion.identity);
+        BulletProjectile bp = p.GetComponent<BulletProjectile>();
+        bp.SetupBullet(enemyTarget, projectileMoveSpeed, weaponDamage);
     }
 
     public void DetectEnemies()
@@ -74,7 +79,6 @@ public class Tower : MonoBehaviour
 
     private void OnMouseDown()
     {
-
         TowerUpgrade.Singleton.ShowSensorOverlay(this);
     }
 
@@ -87,6 +91,7 @@ public class Tower : MonoBehaviour
      {
          TowerUpgrade.Singleton.HideSensorOverlay();
      }*/
+
     private void OnDrawGizmosSelected()
     {
         // Draw the detection radius in the Scene view
@@ -106,10 +111,26 @@ public class Tower : MonoBehaviour
         sensorRadius += towerStatsSO.towerStatsUpgrades[currentTowerLevel - 1].sensorRadiusUpgrade;
         weaponDamage += towerStatsSO.towerStatsUpgrades[currentTowerLevel - 1].weaponDamageUpgrade;
         towerStatsSO.SetTowerSprite(towerSpriteRenderer, currentTowerLevel);
+
+    }
+
+    public bool CanBuyTower()
+    {
+        return towerStatsSO.CanBuyTower(GameManager.Singleton.GetCoin());
+    }
+
+    public bool CanUpgradeTower()
+    {
+        return towerStatsSO.CanUpgradeTower(GameManager.Singleton.GetCoin(), currentTowerLevel);
     }
 
     public bool CheckIfMaxUpgrade()
     {
         return currentTowerLevel == towerStatsSO.towerStatsUpgrades.Length;
+    }
+
+    public int GetCurrentTowerLevel()
+    {
+        return currentTowerLevel-1;
     }
 }

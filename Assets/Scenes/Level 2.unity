@@ -305,10 +305,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
-    - target: {fileID: 728979652066835957, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2794941374633009467, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -319,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2794941374633009467, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.7
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 2794941374633009467, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1642,6 +1638,10 @@ PrefabInstance:
     - target: {fileID: 4545507225254109060, guid: c313d5d4148bd4f4baffb4b900f6048b, type: 3}
       propertyPath: m_Name
       value: Tower Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545507225254109060, guid: c313d5d4148bd4f4baffb4b900f6048b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c313d5d4148bd4f4baffb4b900f6048b, type: 3}

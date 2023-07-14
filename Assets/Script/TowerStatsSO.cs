@@ -8,7 +8,6 @@ public class TowerStatsSO : ScriptableObject
     public float sensorRadius = 20f;
     public int weaponDamage = 1;
 
-    public Sprite[] towerLevelSprite;
     public TowerStatsUpgrade[] towerStatsUpgrades;
 
     public bool CanBuyTower(int coin)
@@ -16,18 +15,26 @@ public class TowerStatsSO : ScriptableObject
         return coin >= towerPrice;
     }
 
-    public void SetTowerSprite(SpriteRenderer towerSprite, int level)
+    public bool CanUpgradeTower(int coin, int towerLevel)
     {
-        towerSprite.sprite = towerLevelSprite[level - 1];
+        return coin >= towerStatsUpgrades[towerLevel - 1].upgradePrice;
     }
+
+    public void SetTowerSprite(SpriteRenderer towerSprite, int towerLevel)
+    {
+        towerSprite.sprite = towerStatsUpgrades[towerLevel - 1].towerLevelSprite;
+    }
+
 
     [System.Serializable]
     public class TowerStatsUpgrade
     {
+        public int upgradePrice = 300;
         public float fireRateUpgrade = 4f;
         public float sensorRadiusUpgrade = 25f;
         public int weaponDamageUpgrade = 3;
 
+        public Sprite towerLevelSprite;
     }
 }
 

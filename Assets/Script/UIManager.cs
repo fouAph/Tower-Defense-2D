@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         GameManager.Singleton.OnWaveCompleted += UIManager_OnWaveCompleted;
-        RefreshCoinUI();
+        UpdateCoinUI();
     }
 
     private void Update()
@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
             {
                 selectedTowerItem.ShowTowerPreview();
                 if (selectedTowerItem.towerPreviewPrefab != null)
-                    TowerUpgrade.Singleton.ShowSensorOverlay(selectedTowerItem);
+                    TowerUpgrade.Singleton.ShowSensorOverlayForPreview(selectedTowerItem);
             }
         }
     }
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
         waveLevel_TMP.text = "Wave: " + gm.currentWave.ToString();
     }
 
-    public void RefreshCoinUI()
+    public void UpdateCoinUI()
     {
         coin_TMP.text = "$" + GameManager.Singleton.GetCoin();
     }

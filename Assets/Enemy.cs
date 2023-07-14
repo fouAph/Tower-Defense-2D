@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
     private int AnimatorHashToIntMoveUp;
     private int AnimatorHashToIntMoveDown;
     private SpriteRenderer spriteRenderer;
+
+    private bool isDead;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -51,6 +53,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 
     private void EnemySetup()
     {
+        isDead = false;
         maxHealth = enemyStatsSO.maxHealth;
         moveSpeed = enemyStatsSO.moveSpeed;
         attackDamage = enemyStatsSO.attackDamage;
@@ -161,12 +164,16 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         PoolSystem.Singleton.SpawnFromPool(hitVFXPrefab, transform.position, Quaternion.identity, transform);
         if (currentHealth <= 0)
         {
-            AddCoinReward();
-            UIManager.Singleton.RefreshCoinUI();
+            if (!isDead)
+                AddCoinReward();
+
+            UIManager.Singleton.UpdateCoinUI();
             GameManager.Singleton.enemiesAlive.Remove(this);
-            gameObject.SetActive(false);
+            isDead = true;
             if (GameManager.Singleton.CheckIfNoEnemyLeft())
                 GameManager.Singleton.OnWaveCompleted_Invoke();
+
+            gameObject.SetActive(false);
 
         }
     }
