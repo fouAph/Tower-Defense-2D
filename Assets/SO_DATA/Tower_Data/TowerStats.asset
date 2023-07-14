@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8b8c9629edc244aac3e3b37f3f25c2, type: 3}
   m_Name: TowerStats
   m_EditorClassIdentifier: 
-  towerPrice: 600
+  towerPrice: 300
   fireRate: 3
   sensorRadius: 20
   weaponDamage: 1

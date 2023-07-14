@@ -190,4 +190,9 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 
         // UpdateHealth();
     }
+
+    public bool GetIsDead()
+    {
+        return isDead;
+    }
 }
