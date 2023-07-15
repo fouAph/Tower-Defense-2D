@@ -18,9 +18,14 @@ public class LevelSettingSO : ScriptableObject
         public List<Enemy> enemyToSpawnList;
     }
 
-    public bool IsUnlocked()
+    public bool GetIsUnlocked()
     {
         return isUnlocked == true;
+    }
+
+    public void SetIsUnlocked(bool value)
+    {
+        isUnlocked = value;
     }
 
 }

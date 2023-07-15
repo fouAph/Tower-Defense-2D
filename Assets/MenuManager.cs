@@ -9,8 +9,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] LevelSettingSO selectedLevel;
 
     [SerializeField] Button startButton;
-    [SerializeField] Button LeftArrowMenu;
-    [SerializeField] Button RightArrowMenu;
+    [SerializeField] Button leftArrowMenu;
+    [SerializeField] Button rightArrowMenu;
+    [SerializeField] Button playButton;
 
     [SerializeField] LevelSettingSO[] levelSettingsArray;
     [SerializeField] Image levelPreviewImage;
@@ -29,16 +30,17 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        LeftArrowMenu.onClick.AddListener(OnLeftArrowButton_Click);
-        RightArrowMenu.onClick.AddListener(OnRightArrowButton_Click);
+        leftArrowMenu.onClick.AddListener(OnLeftArrowButton_Click);
+        rightArrowMenu.onClick.AddListener(OnRightArrowButton_Click);
         startButton.onClick.AddListener(OnStartButton_Click);
+
+        playButton.onClick.AddListener(() => startButton.gameObject.SetActive(selectedLevel.GetIsUnlocked()));
         ActiveOrDeactiveArrowButton();
         SetSelectedLevel();
     }
     private void Start()
     {
-        OpenMenu("MainMenu");
-
+        OpenMenu("MainMenu"); 
     }
 
     public void OnStartButton_Click()
@@ -67,23 +69,23 @@ public class MenuManager : MonoBehaviour
         //For Left Button
         if (currentLevel + 1 <= levelSettingsArray.Length)
         {
-            RightArrowMenu.gameObject.SetActive(true);
+            rightArrowMenu.gameObject.SetActive(true);
         }
 
         if (currentLevel - 1 == 0)
         {
-            LeftArrowMenu.gameObject.SetActive(false);
+            leftArrowMenu.gameObject.SetActive(false);
         }
 
         //For Right Button
         if (currentLevel + 1 > levelSettingsArray.Length)
         {
-            RightArrowMenu.gameObject.SetActive(false);
+            rightArrowMenu.gameObject.SetActive(false);
         }
 
         if (currentLevel - 1 > 0)
         {
-            LeftArrowMenu.gameObject.SetActive(true);
+            leftArrowMenu.gameObject.SetActive(true);
         }
     }
 
@@ -92,12 +94,12 @@ public class MenuManager : MonoBehaviour
         selectedLevel = levelSettingsArray[currentLevel - 1];
         levelPreviewImage.sprite = selectedLevel.levelPreviewSprite;
 
-        if (selectedLevel.IsUnlocked() == false)
+        if (selectedLevel.GetIsUnlocked() == false)
             lockPanel.SetActive(true);
         else
             lockPanel.SetActive(false);
 
-        startButton.gameObject.SetActive(selectedLevel.IsUnlocked());
+        startButton.gameObject.SetActive(selectedLevel.GetIsUnlocked());
     }
 
     private void LoadLevelScene(int sceneBuildIndex)

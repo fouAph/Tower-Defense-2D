@@ -395,7 +395,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2027942736, guid: 75be36cf4b083fb44aa3732d89bcf18f, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9099328418632881984, guid: 75be36cf4b083fb44aa3732d89bcf18f, type: 3}
       propertyPath: m_fontSize
@@ -758,6 +758,10 @@ PrefabInstance:
       propertyPath: countDownHelper
       value: 
       objectReference: {fileID: 656885288}
+    - target: {fileID: 1514827546415441623, guid: 5f765d255c4056a49bb9094a19ae6be9, type: 3}
+      propertyPath: currentLevelSetting
+      value: 
+      objectReference: {fileID: 11400000, guid: d8cd228f7fce7634db3903a2a4eb3be3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f765d255c4056a49bb9094a19ae6be9, type: 3}
 --- !u!1 &1294888509

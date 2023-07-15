@@ -3521,12 +3521,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   coin: 500
-  levelSetting: {fileID: 11400000, guid: 866e784dc5fe70e43aad18579e7f3f96, type: 2}
-  currentWave: 1
-  enemiesAlive: []
+  currentLevelSetting: {fileID: 11400000, guid: 866e784dc5fe70e43aad18579e7f3f96, type: 2}
+  maxHealth: 5
   countDownHelper: {fileID: 35305778}
-  CountdownTimer: 3
-  selectedTower: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!4 &1725449475
 Transform:
   m_ObjectHideFlags: 0
