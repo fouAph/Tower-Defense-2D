@@ -16,13 +16,14 @@ public class Tower : MonoBehaviour
     [SerializeField] float sensorRadius = 20f;
     [SerializeField] Vector3 sensorOffset;
 
-    [SerializeField] float fireRate = 2;
-    [SerializeField] int weaponDamage = 5;
+    // [SerializeField] float fireRate = 2;
+    [SerializeField] float shootingSpeed;
+    [SerializeField] int weaponDamage;
     [SerializeField] float projectileMoveSpeed = 5f;
 
-    private const int sensorBuffer = 5;
+    private TowerWeapon towerWeapon;
     private SpriteRenderer towerSpriteRenderer;
-    private Collider2D[] results = new Collider2D[sensorBuffer];
+    private Collider2D[] results;
     private Enemy enemyTarget;
     private float lastFired;
 
@@ -32,31 +33,33 @@ public class Tower : MonoBehaviour
     {
         PoolSystem.Singleton.AddObjectToPooledObject(projectilePrefab.gameObject, 50);
         towerSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
+        towerWeapon = GetComponentInChildren<TowerWeapon>();
         towerStatsSO.SetTowerSprite(towerSpriteRenderer, currentTowerLevel);
+
+        towerWeapon.SetTower(this);
     }
 
     private void StatSetup()
     {
-        fireRate = towerStatsSO.fireRate;
+        // fireRate = towerStatsSO.fireRate;
+        shootingSpeed = towerStatsSO.shootingSpeed;
         sensorRadius = towerStatsSO.sensorRadius;
     }
 
     void Update()
     {
         DetectEnemies();
-        if (enemyTarget )
+
+        //Set animator's IsShooting parameter 
+        towerWeapon.SetShoot();
+        if (enemyTarget)
         {
             RotateTowerWeaponToTarget();
-            if (Time.time - lastFired > 1f / fireRate)
-            {
-                lastFired = Time.time;
-                FireBullet();
-            }
+
         }
     }
 
-    private void FireBullet()
+    public void FireBullet()
     {
         GameObject p = PoolSystem.Singleton.SpawnFromPool(projectilePrefab.gameObject, shootPoint.position, Quaternion.identity);
         BulletProjectile bp = p.GetComponent<BulletProjectile>();
@@ -68,7 +71,6 @@ public class Tower : MonoBehaviour
         // Calculate the direction from the object's position to the target position
         Vector3 direction = enemyTarget.transform.position - towerWeaponHolder.position;
 
-
         // Calculate the angle in radians
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
@@ -76,38 +78,38 @@ public class Tower : MonoBehaviour
         towerWeaponHolder.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-   public void DetectEnemies()
-{
-    results = Physics2D.OverlapCircleAll(transform.position + sensorOffset, sensorRadius, enemyLayer);
-
-    if (results.Length > 0)
+    public void DetectEnemies()
     {
-        float closestDistance = float.MaxValue;
-        Enemy closestEnemy = null;
+        results = Physics2D.OverlapCircleAll(transform.position + sensorOffset, sensorRadius, enemyLayer);
 
-        foreach (Collider2D enemyCollider in results)
+        if (results.Length > 0)
         {
-            Enemy enemy = enemyCollider.GetComponent<Enemy>();
+            float closestDistance = float.MaxValue;
+            Enemy closestEnemy = null;
 
-            if (enemy != null)
+            foreach (Collider2D enemyCollider in results)
             {
-                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                Enemy enemy = enemyCollider.GetComponent<Enemy>();
 
-                if (distance < closestDistance)
+                if (enemy != null)
                 {
-                    closestDistance = distance;
-                    closestEnemy = enemy;
+                    float distance = Vector2.Distance(transform.position, enemy.transform.position);
+
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestEnemy = enemy;
+                    }
                 }
             }
-        }
 
-        enemyTarget = closestEnemy;
+            enemyTarget = closestEnemy;
+        }
+        else
+        {
+            enemyTarget = null; // No enemies detected, so clear the target
+        }
     }
-    else
-    {
-        enemyTarget = null; // No enemies detected, so clear the target
-    }
-}
 
     public float GetSensorRadius()
     {
@@ -119,15 +121,6 @@ public class Tower : MonoBehaviour
         TowerUpgrade.Singleton.ShowSensorOverlay(this);
     }
 
-    /*private void OnMouseEnter()
-     {
-         TowerUpgrade.Singleton.ShowSensorOverlay(this);
-     }*/
-
-    /*  private void OnMouseExit()
-     {
-         TowerUpgrade.Singleton.HideSensorOverlay();
-     }*/
 
     private void OnDrawGizmosSelected()
     {
@@ -143,11 +136,13 @@ public class Tower : MonoBehaviour
 
     public void UpgradeTower()
     {
-        currentTowerLevel++;
-        fireRate += towerStatsSO.towerStatsUpgrades[currentTowerLevel - 1].fireRateUpgrade;
-        sensorRadius += towerStatsSO.towerStatsUpgrades[currentTowerLevel - 1].sensorRadiusUpgrade;
-        weaponDamage += towerStatsSO.towerStatsUpgrades[currentTowerLevel - 1].weaponDamageUpgrade;
+        shootingSpeed += towerStatsSO.towerStatsUpgrades[currentTowerLevel].shootingSpeedUpgrade;
+        towerWeapon.SetAnimationShootingSpeed(shootingSpeed);
+        // fireRate += towerStatsSO.towerStatsUpgrades[currentTowerLevel ].fireRateUpgrade;
+        sensorRadius += towerStatsSO.towerStatsUpgrades[currentTowerLevel].sensorRadiusUpgrade;
+        weaponDamage += towerStatsSO.towerStatsUpgrades[currentTowerLevel].weaponDamageUpgrade;
         towerStatsSO.SetTowerSprite(towerSpriteRenderer, currentTowerLevel);
+        currentTowerLevel++;
 
     }
 
@@ -168,6 +163,11 @@ public class Tower : MonoBehaviour
 
     public int GetCurrentTowerLevel()
     {
-        return currentTowerLevel - 1;
+        return currentTowerLevel;
+    }
+
+    public bool CheckIsEnemyTargetAvailable()
+    {
+        return enemyTarget;
     }
 }

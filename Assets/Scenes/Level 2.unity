@@ -301,17 +301,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 667070812723615747, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 728979652066835957, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 2794941374633009467, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2794941374633009467, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -353,9 +349,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4900824908832363629, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.2
+    - target: {fileID: 8787507146180408153, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
+      propertyPath: shootingSpeed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
@@ -1601,7 +1597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4545507225254109058, guid: c313d5d4148bd4f4baffb4b900f6048b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4545507225254109058, guid: c313d5d4148bd4f4baffb4b900f6048b, type: 3}
       propertyPath: m_LocalPosition.x

@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
-  towerWeaponHolder: {fileID: 4900824908832363629}
   shootPoint: {fileID: 3754483251998584958}
-  projectilePrefab: {fileID: 2724740715555401332, guid: f10f224d80273f44ea668985186bb759, type: 3}
+  towerWeaponHolder: {fileID: 4900824908832363629}
+  projectilePrefab: {fileID: 3993472888912804340, guid: 102a74179f9cb374eb199189aebc5798, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 667070812723615747}
   - component: {fileID: 5151480612607756}
   - component: {fileID: 1006084150648301961}
+  - component: {fileID: 835201011}
   m_Layer: 0
   m_Name: TowerWeapon
   m_TagString: Untagged
@@ -144,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110107884041283800}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 9.85, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -225,6 +226,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &835201011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110107884041283800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526846d3aeeba6a428573ee6643b217e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2753911359289916813
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6999628089064013392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 10.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -4,7 +4,8 @@ using UnityEngine;
 public class TowerStatsSO : ScriptableObject
 {
     public int towerPrice = 100;
-    public float fireRate = 3f;
+    // public float fireRate = 3f;
+    public float shootingSpeed = 1f;
     public float sensorRadius = 20f;
     public int weaponDamage = 1;
 
@@ -17,12 +18,12 @@ public class TowerStatsSO : ScriptableObject
 
     public bool CanUpgradeTower(int coin, int towerLevel)
     {
-        return coin >= towerStatsUpgrades[towerLevel - 1].upgradePrice;
+        return coin >= towerStatsUpgrades[towerLevel].upgradePrice;
     }
 
     public void SetTowerSprite(SpriteRenderer towerSprite, int towerLevel)
     {
-        towerSprite.sprite = towerStatsUpgrades[towerLevel - 1].towerLevelSprite;
+        towerSprite.sprite = towerStatsUpgrades[towerLevel].towerLevelSprite;
     }
 
 
@@ -30,7 +31,8 @@ public class TowerStatsSO : ScriptableObject
     public class TowerStatsUpgrade
     {
         public int upgradePrice = 300;
-        public float fireRateUpgrade = 4f;
+        public float shootingSpeedUpgrade = .3f;
+        // public float fireRateUpgrade = 4f;
         public float sensorRadiusUpgrade = 25f;
         public int weaponDamageUpgrade = 3;
 

@@ -16,6 +16,7 @@ public class BulletProjectile : MonoBehaviour, IPooledObject
     public void SetupBullet(Enemy _enemyTarget, float _moveSpeed, int _weaponDamage)
     {
         enemyTarget = _enemyTarget;
+        if (!enemyTarget) { gameObject.SetActive(false); return; }
         targetPos = enemyTarget.transform.position;
         moveSpeed = _moveSpeed;
         weaponDamage = _weaponDamage;
@@ -23,6 +24,7 @@ public class BulletProjectile : MonoBehaviour, IPooledObject
     private void MoveProjectile()
     {
         // Calculate the direction from the object's position to the target position
+        if (!enemyTarget) { gameObject.SetActive(false); return; }
         Vector3 direction = enemyTarget.transform.position - transform.position;
 
 
@@ -66,6 +68,6 @@ public class BulletProjectile : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
-        
+
     }
 }
