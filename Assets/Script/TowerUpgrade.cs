@@ -11,17 +11,19 @@ public class TowerUpgrade : MonoBehaviour
     [SerializeField] GameObject sensorOverlay;
     [SerializeField] Button_Sprite upgradeSpriteButton;
     [SerializeField] Button_Sprite deleteSpriteButton;
-    
-     private Tower tower;
+    [SerializeField] TextMesh upgradePrice_TextMesh;
+
+    private Tower tower;
 
     private void Start()
     {
         upgradeSpriteButton.ClickFunc = UpgradeTower;
+        HideSensorOverlay();
     }
 
     public void UpdateSensorOverlayForPreview(TowerStatsSO towerStatsSO)
     {
-        sensorOverlay.transform.localScale = Vector2.one * towerStatsSO.sensorRadius * 2;
+        sensorOverlay.transform.localScale = Vector2.one * towerStatsSO.baseSensorRadius * 2;
     }
 
     public void UpdateSensorOverlay(Tower _tower)
@@ -50,6 +52,7 @@ public class TowerUpgrade : MonoBehaviour
     public void ShowUpgradeButton()
     {
         deleteSpriteButton.gameObject.SetActive(true);
+        UpdateUpgradePrice();
         if (!tower.CheckIfMaxUpgrade())
         {
             upgradeSpriteButton.gameObject.SetActive(true);
@@ -74,7 +77,6 @@ public class TowerUpgrade : MonoBehaviour
             CodeMonkey.CMDebug.TextPopupMouse("Not Enough Coin To Upgrade ");
             return;
         }
-
         GameManager.Singleton.SubstractCoin(tower.towerStatsSO.towerStatsUpgrades[tower.GetCurrentTowerLevel()].upgradePrice);
         UIManager.Singleton.UpdateCoinUI();
         tower.UpgradeTower();
@@ -83,9 +85,13 @@ public class TowerUpgrade : MonoBehaviour
             upgradeSpriteButton.gameObject.SetActive(false);
         }
         UpdateSensorOverlay(tower);
-        print("tower " + tower.name);
+        UpdateUpgradePrice(); 
     }
 
-    //FIX Sensor OverLay not updating when Upgrade
+    private void UpdateUpgradePrice()
+    {
+        if (tower.GetCurrentTowerLevel() != tower.towerStatsSO.towerStatsUpgrades.Length)
+            upgradePrice_TextMesh.text = "$" + tower.towerStatsSO.towerStatsUpgrades[tower.GetCurrentTowerLevel()].upgradePrice.ToString();
+    }
 }
 

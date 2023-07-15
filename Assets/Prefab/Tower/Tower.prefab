@@ -112,10 +112,10 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  currentTowerLevel: 1
+  currentTowerLevel: 0
   sensorRadius: 17.7
   sensorOffset: {x: 0, y: 4.62, z: 0}
-  fireRate: 2
+  shootingSpeed: 0
   weaponDamage: 1
   projectileMoveSpeed: 50
 --- !u!1 &1110107884041283800

@@ -67,12 +67,6 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         animator.Play(stringHash);
     }
 
-    private void UpdateHealth()
-    {
-        float healthPercentage = (float)currentHealth / maxHealth;
-        float healthBarSize = WORLDBAR_SCALE * healthPercentage;
-        healthBar.SetSize(healthBarSize);
-    }
 
     private void MoveToWayPoint()
     {
@@ -90,6 +84,8 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
                 if (currentWayPoint == currentWayPointList.Count)
                 {
                     //TODO When Arrived, Damage The Player (Decrease player Health)
+                    GameManager.Singleton.OnDamaged(enemyStatsSO.attackDamage);
+                    OnEnemyArrive();
                     gameObject.SetActive(false);
                     return;
                 }
@@ -168,7 +164,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
                 AddCoinReward();
 
             UIManager.Singleton.UpdateCoinUI();
-            GameManager.Singleton.enemiesAlive.Remove(this);
+            OnEnemyArrive();
             isDead = true;
             if (GameManager.Singleton.CheckIfNoEnemyLeft())
                 GameManager.Singleton.OnWaveCompleted_Invoke();
@@ -176,6 +172,18 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
             gameObject.SetActive(false);
 
         }
+    }
+
+    private void UpdateHealth()
+    {
+        float healthPercentage = (float)currentHealth / maxHealth;
+        float healthBarSize = WORLDBAR_SCALE * healthPercentage;
+        healthBar.SetSize(healthBarSize);
+    }
+
+    private void OnEnemyArrive()
+    {
+        GameManager.Singleton.enemiesAlive.Remove(this);
     }
 
     private void AddCoinReward()

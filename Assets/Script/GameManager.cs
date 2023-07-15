@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,24 +13,24 @@ public class GameManager : MonoBehaviour
 
     // [SerializeField] List<LevelInfoDataSO> levelInfoDataList = new List<LevelInfoDataSO>();
     public LevelSettingSO levelSetting;
-    public int currentWave = 1;
-
+    [SerializeField] float maxHealth = 5;
+    [SerializeField] CountDownHelper countDownHelper;
     public event EventHandler OnWaveCompleted;
 
-    public List<Enemy> enemiesAlive = new List<Enemy>();
-
-    [SerializeField] CountDownHelper countDownHelper;
+    [NonSerialized] public int currentWave = 1;
+    [NonSerialized] public List<Enemy> enemiesAlive = new List<Enemy>();
     private const int COUNTDOWN_TIMER = 3;
 
-    public float CountdownTimer;
-    float startCountdown;
+    [SerializeField] Slider healthBar;
+    private Tower selectedTower;
+    private float CountdownTimer = 3;
+    private float startCountdown;
+    private float currentHealth;
 
     private void Awake()
     {
         Singleton = this;
     }
-
-    [SerializeField] Tower selectedTower;
 
     private void Start()
     {
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour
 
                 gridobj.SetOccupied(true);
                 gridobj.TriggerGridObjectChanged();
-               SubstractCoin(selectedTower.towerStatsSO.towerPrice);
+                SubstractCoin(selectedTower.towerStatsSO.towerPrice);
                 UIManager.Singleton.UpdateCoinUI();
             }
 
@@ -76,10 +77,15 @@ public class GameManager : MonoBehaviour
             selectedTower = null;
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnDamaged(1);
+        }
     }
 
     private void LevelSetup()
     {
+        currentHealth = maxHealth;
         EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(levelSetting.enemyDatas[currentWave - 1].enemyToSpawnList);
         countDownHelper.gameObject.SetActive(true);
         UIManager.Singleton.LevelSetup();
@@ -149,7 +155,6 @@ public class GameManager : MonoBehaviour
         return coin >= price;
     }
 
-
     public bool CheckIfNoEnemyLeft()
     {
         return enemiesAlive.Count == 0;
@@ -174,5 +179,24 @@ public class GameManager : MonoBehaviour
         UIManager.Singleton.LevelSetup();
     }
 
+    public void OnDamaged(int damage)
+    {
+        currentHealth -= damage;
+        // health = Mathf.Clamp(health, health, 0);
+        UpdateHealth();
+        // PoolSystem.Singleton.SpawnFromPool(hitVFXPrefab, transform.position, Quaternion.identity, transform);
+        if (currentHealth <= 0)
+        {
+            //TODO Spawn GameOver Panel
+        }
+    }
+
+    private void UpdateHealth()
+    {
+        float healthPercentage = (float)currentHealth / maxHealth;
+        // float healthBarSize = healthBar. * healthPercentage;
+        print(healthPercentage);
+        healthBar.value = (float)healthPercentage;
+    }
 }
 public enum GameState { Menu, InGame, GameOver, NotReady, InShop }

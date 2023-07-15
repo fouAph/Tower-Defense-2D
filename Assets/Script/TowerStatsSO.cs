@@ -5,9 +5,9 @@ public class TowerStatsSO : ScriptableObject
 {
     public int towerPrice = 100;
     // public float fireRate = 3f;
-    public float shootingSpeed = 1f;
-    public float sensorRadius = 20f;
-    public int weaponDamage = 1;
+    public float baseShootingSpeed = 1f;
+    public float baseSensorRadius = 20f;
+    public int baseWeaponDamage = 1;
 
     public TowerStatsUpgrade[] towerStatsUpgrades;
 

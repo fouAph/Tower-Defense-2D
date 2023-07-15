@@ -11,15 +11,13 @@ public class Tower : MonoBehaviour
     [SerializeField] Transform projectilePrefab;
     [SerializeField] LayerMask enemyLayer;
 
-    [SerializeField] int currentTowerLevel = 1;
-
     [SerializeField] float sensorRadius = 20f;
     [SerializeField] Vector3 sensorOffset;
 
+    [SerializeField] float projectileMoveSpeed = 50;
     // [SerializeField] float fireRate = 2;
-    [SerializeField] float shootingSpeed;
-    [SerializeField] int weaponDamage;
-    [SerializeField] float projectileMoveSpeed = 5f;
+    private float shootingSpeed;
+    private int weaponDamage;
 
     private TowerWeapon towerWeapon;
     private SpriteRenderer towerSpriteRenderer;
@@ -27,6 +25,7 @@ public class Tower : MonoBehaviour
     private Enemy enemyTarget;
     private float lastFired;
 
+    private int currentTowerLevel;
     private int enemyCount;
 
     private void Start()
@@ -34,7 +33,8 @@ public class Tower : MonoBehaviour
         PoolSystem.Singleton.AddObjectToPooledObject(projectilePrefab.gameObject, 50);
         towerSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         towerWeapon = GetComponentInChildren<TowerWeapon>();
-        towerStatsSO.SetTowerSprite(towerSpriteRenderer, currentTowerLevel);
+        // towerStatsSO.SetTowerSprite(towerSpriteRenderer, currentTowerLevel);
+        StatSetup();
 
         towerWeapon.SetTower(this);
     }
@@ -42,8 +42,9 @@ public class Tower : MonoBehaviour
     private void StatSetup()
     {
         // fireRate = towerStatsSO.fireRate;
-        shootingSpeed = towerStatsSO.shootingSpeed;
-        sensorRadius = towerStatsSO.sensorRadius;
+        weaponDamage = towerStatsSO.baseWeaponDamage;
+        shootingSpeed = towerStatsSO.baseShootingSpeed;
+        sensorRadius = towerStatsSO.baseSensorRadius;
     }
 
     void Update()
