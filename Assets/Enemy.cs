@@ -9,7 +9,12 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
     private const int WORLDBAR_SCALE = 14;
     [SerializeField] EnemyStatsSO enemyStatsSO;
     [SerializeField] GameObject hitVFXPrefab;
-    private List<Transform> currentWayPointList = new List<Transform>();
+    [SerializeField] List<Transform> currentWayPointList = new List<Transform>();
+
+    [SerializeField] bool flipSpriteWhenGoingRight;
+    [SerializeField] bool flipSpriteWhenGoingLeft;
+
+
     private World_Bar healthBar;
 
     private float maxHealth = 100;
@@ -67,7 +72,6 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         animator.Play(stringHash);
     }
 
-
     private void MoveToWayPoint()
     {
         transform.position = Vector3.MoveTowards(transform.position, currentWayPointList[currentWayPoint].position,
@@ -109,25 +113,36 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         //Right Direction
         if (angle > -45 && angle <= 45)
         {
-            PlayAnimation(AnimatorHashToIntMoveRight);
-            spriteRenderer.flipX = true;
+
+
+            if (flipSpriteWhenGoingRight)
+                spriteRenderer.flipX = true;
+
+            else spriteRenderer.flipX = false;
             spriteRenderer.flipX = false;
+
+            PlayAnimation(AnimatorHashToIntMoveRight);
         }
 
         //Up Direction
         else if (angle > 45 && angle <= 135)
         {
+
             spriteRenderer.flipY = true;
             spriteRenderer.flipX = false;
+
             PlayAnimation(AnimatorHashToIntMoveUp);
-
-
         }
         //Left Direction
         else if (angle > 135 || angle <= -135)
         {
-            spriteRenderer.flipX = false;
+            if (flipSpriteWhenGoingLeft)
+                spriteRenderer.flipX = true;
+
+            else spriteRenderer.flipX = false;
+
             spriteRenderer.flipY = false;
+
             PlayAnimation(AnimatorHashToIntMoveLeft);
 
 
