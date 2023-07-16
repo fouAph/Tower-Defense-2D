@@ -975,7 +975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1841594337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1127,6 +1127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 8787507146180408153, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
   towerPreviewPrefab: {fileID: 1490639794994129777, guid: 86795cfc31859a0409589d8445cf4944, type: 3}
+  lockObject: {fileID: 0}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 1728847239}
 --- !u!1 &2027942735
@@ -2030,6 +2031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 8787507146180408153, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
   towerPreviewPrefab: {fileID: 1490639794994129777, guid: 86795cfc31859a0409589d8445cf4944, type: 3}
+  lockObject: {fileID: 0}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 8676791970371303128}
 --- !u!1 &1798365310515739217
@@ -2632,7 +2634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.1251907, y: -2.0630112}
+  m_AnchoredPosition: {x: -4.125183, y: -2.0629883}
   m_SizeDelta: {x: 41.254, y: 31.627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9099328418562500191
@@ -2732,14 +2734,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.62352943}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2838,7 +2840,7 @@ GameObject:
   - component: {fileID: 9099328418670291791}
   - component: {fileID: 9099328418670291785}
   m_Layer: 5
-  m_Name: towerImage (2)
+  m_Name: TowerItemUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2864,7 +2866,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 74.006, y: 96.26}
+  m_SizeDelta: {x: 99.922, y: 144.424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9099328418670291784
 CanvasRenderer:
@@ -2887,14 +2889,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5235849, g: 1, b: 0.94864666, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1537775190, guid: 000c470e7a451b84fb2e5a55bd360c1e, type: 3}
+  m_Sprite: {fileID: 1997450467, guid: 52bfbd04e5cfd744398e4f1cca9ccaea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2916,8 +2918,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f7f8378a4ac0a44bf1f7d7fc8570ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 4971992528239913503, guid: 6acb43e7e29876541896b541019b72c1, type: 3}
-  towerPreviewPrefab: {fileID: 3105531557228552801, guid: 75a0ef48dab09e9458f8ab243e4daa4a, type: 3}
+  towerPrefab: {fileID: 2690281432720980411, guid: 0d528f3ec51596d458bc8e784076fddb, type: 3}
+  towerPreviewPrefab: {fileID: 7045464332668086075, guid: af80ad1bb9ec96149a0c1c97a100aa24, type: 3}
+  lockObject: {fileID: 9099328418568423378}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 9099328420443451521}
 --- !u!1 &9099328418676952203
@@ -3162,7 +3165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9099328419060948734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3170,7 +3173,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9099328419060948733}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3180,8 +3183,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0001487732, y: -0}
+  m_SizeDelta: {x: -29.156, y: -42.141}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9099328419060948728
 CanvasRenderer:
@@ -3204,14 +3207,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.62352943}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3445,7 +3448,7 @@ GameObject:
   - component: {fileID: 9099328419282964383}
   - component: {fileID: 9099328419282964377}
   m_Layer: 5
-  m_Name: towerImage (1)
+  m_Name: TowerItemUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3471,7 +3474,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 74.006, y: 96.26}
+  m_SizeDelta: {x: 99.922, y: 144.424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9099328419282964376
 CanvasRenderer:
@@ -3494,14 +3497,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7980194, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1537775190, guid: 000c470e7a451b84fb2e5a55bd360c1e, type: 3}
+  m_Sprite: {fileID: -1232518074, guid: 461cdc233d616034e99f32f4c406e6e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3523,8 +3526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f7f8378a4ac0a44bf1f7d7fc8570ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 1269522515736132456, guid: 197e9ab783e211c4995663af724030f9, type: 3}
-  towerPreviewPrefab: {fileID: 6389017534735936332, guid: a94ef1b671b2df546b3590e17ada61b9, type: 3}
+  towerPrefab: {fileID: 7824811235961450674, guid: 56b5862a7d9580646aa1e8c197533ca3, type: 3}
+  towerPreviewPrefab: {fileID: 6582325645070069366, guid: 3df3f6bcdb1331546a6dd32201e7b3ad, type: 3}
+  lockObject: {fileID: 9099328419440647244}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 9099328418602446049}
 --- !u!1 &9099328419440647244
@@ -3586,14 +3590,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.62352943}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3643,8 +3647,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 656, y: 81.44595}
-  m_SizeDelta: {x: 565.607, y: 129.98}
+  m_AnchoredPosition: {x: 598.375, y: 102.53}
+  m_SizeDelta: {x: 660.708, y: 167.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9099328419554566235
 CanvasRenderer:
@@ -3895,7 +3899,7 @@ GameObject:
   - component: {fileID: 9099328419715628200}
   - component: {fileID: 9099328419715628202}
   m_Layer: 5
-  m_Name: towerImage (3)
+  m_Name: TowerItemUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3921,7 +3925,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 74.006, y: 96.26}
+  m_SizeDelta: {x: 99.922, y: 144.424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9099328419715628201
 CanvasRenderer:
@@ -3944,14 +3948,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49902046, g: 0.4009434, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1537775190, guid: 000c470e7a451b84fb2e5a55bd360c1e, type: 3}
+  m_Sprite: {fileID: -1807612899, guid: a953253b3dec73f45bccc007108a745e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3974,7 +3978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 3707070429513415989, guid: 1d0e9c1a4a1a8ca4fa725fb0b074cc60, type: 3}
-  towerPreviewPrefab: {fileID: 5430846850413263557, guid: 27f20a4841a9bca43a57e2bd8302d2e6, type: 3}
+  towerPreviewPrefab: {fileID: 7045464332668086075, guid: af80ad1bb9ec96149a0c1c97a100aa24, type: 3}
+  lockObject: {fileID: 9099328420298511560}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 9099328420577681191}
 --- !u!1 &9099328420005983667
@@ -4253,6 +4258,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 1841594336}
+  towerItemUIImage:
+  - {fileID: 9099328419060948735}
+  - {fileID: 9099328419440647246}
+  - {fileID: 9099328418568423388}
+  - {fileID: 9099328420298511562}
   levelComplete_Group: {fileID: 440078077}
   levelFail_Group: {fileID: 1009204229}
   mainMenuButton: {fileID: 1506017024}
@@ -4321,14 +4331,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.62352943}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4351,7 +4361,7 @@ GameObject:
   - component: {fileID: 9099328420373798046}
   - component: {fileID: 9099328420373798040}
   m_Layer: 5
-  m_Name: towerImage
+  m_Name: TowerItemUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4377,7 +4387,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 74.006, y: 96.26}
+  m_SizeDelta: {x: 99.922, y: 144.424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9099328420373798047
 CanvasRenderer:
@@ -4431,6 +4441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 8787507146180408153, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
   towerPreviewPrefab: {fileID: 1490639794994129777, guid: 86795cfc31859a0409589d8445cf4944, type: 3}
+  lockObject: {fileID: 9099328419060948733}
   towerStatsSO: {fileID: 11400000, guid: 0264cbec1bff77b4ab170c059edbdb56, type: 2}
   itemHighlightImage: {fileID: 9099328418562500188}
 --- !u!1 &9099328420443451521

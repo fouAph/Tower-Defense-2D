@@ -11,6 +11,8 @@ public class Tower : MonoBehaviour
     [SerializeField] Transform projectilePrefab;
     [SerializeField] LayerMask enemyLayer;
 
+    [SerializeField] AudioClip shootSFX;
+
     [SerializeField] float sensorRadius = 20f;
     [SerializeField] Vector3 sensorOffset;
 
@@ -56,7 +58,6 @@ public class Tower : MonoBehaviour
         if (enemyTarget)
         {
             RotateTowerWeaponToTarget();
-
         }
     }
 
@@ -65,6 +66,8 @@ public class Tower : MonoBehaviour
         GameObject p = PoolSystem.Singleton.SpawnFromPool(projectilePrefab.gameObject, shootPoint.position, Quaternion.identity);
         BulletProjectile bp = p.GetComponent<BulletProjectile>();
         bp.SetupBullet(enemyTarget, projectileMoveSpeed, weaponDamage);
+
+        SoundManager.Singleton.PlayAudio(shootSFX);
     }
 
     private void RotateTowerWeaponToTarget()

@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TowerItemUI : MonoBehaviour, IPointerClickHandler
 {
     public Tower towerPrefab;
     public GameObject towerPreviewPrefab;
+    public GameObject lockObject;
+    public Image towerImage;
     public TowerStatsSO towerStatsSO;
     [SerializeField] GameObject itemHighlightImage;
 
     private void Awake()
     {
         InitiateTowerPreview();
+        towerImage = GetComponent<Image>();
     }
 
     private void Start()
@@ -21,7 +25,8 @@ public class TowerItemUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Selected(this);
+        if (GameManager.Singleton.CheckIfEnoughCoinForPrice(towerStatsSO.towerPrice))
+            Selected(this);
     }
 
     public void Selected(TowerItemUI towerItemUI)
@@ -57,6 +62,16 @@ public class TowerItemUI : MonoBehaviour, IPointerClickHandler
     public void SetTowerPreviewPosition(Vector3 newPos)
     {
         towerPreviewPrefab.transform.position = newPos;
+    }
+
+    public void ShowLockObject()
+    {
+        lockObject.SetActive(true);
+    }
+
+    public void HideLockObject()
+    {
+        lockObject.SetActive(false);
     }
 
     public void Deselected()

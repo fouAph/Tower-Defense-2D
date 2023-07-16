@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Singleton;
     public GameState gameState = GameState.Menu;
-    [SerializeField]
-    private int coin = 500;
+    [SerializeField] int startingCoin = 500;
+    private int coin;
 
     // [SerializeField] List<LevelInfoDataSO> levelInfoDataList = new List<LevelInfoDataSO>();
     public LevelSettingSO currentLevelSetting;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     public int currentWave = 1;
     public int nextWave { get { return currentWave - 1; } }
-   [NonSerialized] public List<Enemy> enemiesAlive = new List<Enemy>();
+    [NonSerialized] public List<Enemy> enemiesAlive = new List<Enemy>();
     private const int COUNTDOWN_TIMER = 3;
 
     [SerializeField] Slider healthBar;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler OnLevelComplete;
     public event EventHandler OnLevelFailed;
-
+    public event EventHandler OnCoinChanged;
     private int maxWave;
 
     private void Awake()
@@ -41,13 +41,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        coin = startingCoin;
         OnWaveCompleted += GameManager_OnWaveCompleted;
         OnLevelComplete += GameManager_OnLevelComplete;
         OnLevelFailed += GameManager_OnLevelFailed;
+        OnCoinChanged += GameManager_OnCoinChanged;
         LevelSetup();
         StartCoroutine(StartGameCountdown());
 
         maxWave = currentLevelSetting.enemyDatas.Length;
+        OnCoinChanged?.Invoke(this, EventArgs.Empty);
     }
 
     private void Update()
@@ -153,11 +156,13 @@ public class GameManager : MonoBehaviour
     public void AddCoin(int value)
     {
         coin += value;
+        OnCoinChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void SubstractCoin(int value)
     {
         coin -= value;
+        OnCoinChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void SetSelectedTower(Tower towerPrefab)
@@ -165,11 +170,6 @@ public class GameManager : MonoBehaviour
         selectedTower = towerPrefab;
     }
     #endregion
-
-    public bool CanBuy(int price)
-    {
-        return coin >= price;
-    }
 
     public bool CheckIfNoEnemyLeft()
     {
@@ -194,6 +194,11 @@ public class GameManager : MonoBehaviour
         UIManager.Singleton.LevelSetup();
     }
 
+    private void GameManager_OnCoinChanged(object sender, EventArgs e)
+    {
+
+    }
+
     public void OnDamaged(int damage)
     {
         currentHealth -= damage;
@@ -213,6 +218,7 @@ public class GameManager : MonoBehaviour
 
     public void GameManager_OnLevelFailed(object sender, EventArgs e)
     {
+
     }
 
     private void UpdateHealthBarUI()
@@ -221,6 +227,11 @@ public class GameManager : MonoBehaviour
         // float healthBarSize = healthBar. * healthPercentage;
         print(healthPercentage);
         healthBar.value = (float)healthPercentage;
+    }
+
+    public bool CheckIfEnoughCoinForPrice(int price)
+    {
+        return coin >= price;
     }
 }
 public enum GameState { Menu, InGame, GameOver, NotReady, InShop }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
   enemyName: 
-  maxHealth: 5
+  maxHealth: 20
   moveSpeed: 10.22
   attackDamage: 2
   coinReward: 100

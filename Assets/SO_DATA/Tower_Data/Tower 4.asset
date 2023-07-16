@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef8b8c9629edc244aac3e3b37f3f25c2, type: 3}
+  m_Name: Tower 4
+  m_EditorClassIdentifier: 
+  towerPrice: 100
+  baseShootingSpeed: 1
+  baseSensorRadius: 20
+  baseWeaponDamage: 7
+  towerStatsUpgrades:
+  - upgradePrice: 400
+    shootingSpeedUpgrade: 0.3
+    sensorRadiusUpgrade: 3
+    weaponDamageUpgrade: 1
+    towerLevelSprite: {fileID: 651222914, guid: a953253b3dec73f45bccc007108a745e, type: 3}
+  - upgradePrice: 500
+    shootingSpeedUpgrade: 0.7
+    sensorRadiusUpgrade: 3
+    weaponDamageUpgrade: 1
+    towerLevelSprite: {fileID: 1149149482, guid: a953253b3dec73f45bccc007108a745e, type: 3}
