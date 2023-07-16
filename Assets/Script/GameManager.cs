@@ -213,19 +213,17 @@ public class GameManager : MonoBehaviour
 
     public void GameManager_OnLevelComplete(object sender, EventArgs e)
     {
-
+        gameState = GameState.GameOver;
     }
 
     public void GameManager_OnLevelFailed(object sender, EventArgs e)
     {
-
+        gameState = GameState.GameOver;
     }
 
     private void UpdateHealthBarUI()
     {
         float healthPercentage = (float)currentHealth / maxHealth;
-        // float healthBarSize = healthBar. * healthPercentage;
-        print(healthPercentage);
         healthBar.value = (float)healthPercentage;
     }
 
@@ -234,4 +232,4 @@ public class GameManager : MonoBehaviour
         return coin >= price;
     }
 }
-public enum GameState { Menu, InGame, GameOver, NotReady, InShop }
+public enum GameState { Menu, InGame, GameOver }

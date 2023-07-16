@@ -1,0 +1,1037 @@
+fileFormatVersion: 2
+guid: 631dd8e1aaa47dc4e99ed32bdb273c73
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 9
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 129
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d652d07d5619eb44bf1a13212ea83f0
+      internalID: -226577921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_1
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 129
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80cccb5fe8969ac4680ce401ca97b13f
+      internalID: 828523172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_2
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 129
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba761fe610c7b54eb6112bd012c3648
+      internalID: 1185428526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_3
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 129
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c18d4e6a890c90c4f8039ad8a2a69e25
+      internalID: -300121275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_4
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 129
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c23634d386e9bbe4e85a9672037554d1
+      internalID: 547741810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_5
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 129
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4263d5b3c8c56234798285a6c5fc2511
+      internalID: -1172771585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_6
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 129
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421f8f1c73b19724996eb6587b9719c7
+      internalID: -1813352527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_7
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 129
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f980324ac4def24cbe0c8b53a0f1eff
+      internalID: 1771574760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_8
+      rect:
+        serializedVersion: 2
+        x: 2252
+        y: 71
+        width: 7
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae0411ea93f79e1419e70198601c2f45
+      internalID: -825497936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_9
+      rect:
+        serializedVersion: 2
+        x: 2350
+        y: 82
+        width: 4
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82e847433bf2d7049a4c0c70c8ddf8c0
+      internalID: 1040704722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_10
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 33
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 712e4d41ab6d8304ab71216cfe285251
+      internalID: -1800581420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_11
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 33
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b859454fd27b5b64a91efd085817baff
+      internalID: -642110811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_12
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 33
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1663b0525e95684ba26610f7baa0473
+      internalID: 2095679129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_13
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 33
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a773b2e527028894599c0bbb812a2541
+      internalID: 548742729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_14
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29bcec97ad266847abaff1c664420ed
+      internalID: -1088527023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_15
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c064fd30c25cd9742a0f87bf16da322e
+      internalID: 1005314379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_16
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 33
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2943c9faa10fb9d41baac04ede57861b
+      internalID: 889125728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_17
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ceb32bc9577f614bbd0ef31fe870ad4
+      internalID: 702009564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_18
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f4c8c07661064c4b8030546d204c775
+      internalID: 865136823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_19
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 33
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3156abfb173e95b49a9a750fddb71fc3
+      internalID: -1688686874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_20
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 282225f9a580d05439964cc1ce051eab
+      internalID: 95669595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_21
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 33
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df9c30b4ccf48b48a3c29e85a2894b3
+      internalID: -1592915136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_22
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a754ea36796877945bb10fcb31c5f87a
+      internalID: -674069929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_23
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e3b7405d2709ba4eb728624e59a4c3a
+      internalID: -770824305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_24
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 33
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 518ad4c2e12939241ba28c6a5c8f344d
+      internalID: 2114464015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_25
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f1094909b24a8246a41aa126b97fdd9
+      internalID: 1619879993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_26
+      rect:
+        serializedVersion: 2
+        x: 1571
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1d6d665bb81454d87fa7f9bdc6c792
+      internalID: 200189294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_27
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 33
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b512da4b0b7029f4a915dafde12149a6
+      internalID: 957232443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_28
+      rect:
+        serializedVersion: 2
+        x: 1763
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c394326a19c5b4c9d2ee25f6c61240
+      internalID: -1477186035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_29
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 33
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f7cffc41669a741bf9d2447fdf8cef
+      internalID: -1255835386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_30
+      rect:
+        serializedVersion: 2
+        x: 1955
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58ef50964030282408299f66eea3cde6
+      internalID: -136632605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_31
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 33
+        width: 26
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 675efdceb476174459dcde4958f19726
+      internalID: -1769429167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_32
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 33
+        width: 34
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ded67ba1b7a119042bcdceaf0b07db61
+      internalID: -1863861976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_33
+      rect:
+        serializedVersion: 2
+        x: 2227
+        y: 31
+        width: 59
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1bd94e49d99fb64fa3da4f8579ccd89
+      internalID: 109839512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_34
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 60
+        width: 14
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed8dcf2f3a24fe49a0387ba9eb35a63
+      internalID: 236334374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_35
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 29
+        width: 26
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0acd4fb04780ea4d969a1d7a2837b2f
+      internalID: 1077304407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_36
+      rect:
+        serializedVersion: 2
+        x: 2372
+        y: 60
+        width: 12
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 049c4fe08a12cd448af14852260e1113
+      internalID: -632214654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_37
+      rect:
+        serializedVersion: 2
+        x: 2435
+        y: 33
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a73fe34dc85b3940911a637c04b571d
+      internalID: 442140390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_38
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 33
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dffb882a62dbe14e834829a5b4bf805
+      internalID: 1676662140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_39
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 33
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c2d262de03efe14fa33a7629da26567
+      internalID: 465985445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower Weapon 4 - 1_40
+      rect:
+        serializedVersion: 2
+        x: 2723
+        y: 33
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd68826cc6afc5341b13a0be3e49d7e2
+      internalID: 962205901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Tower Weapon 4 - 1_0: -226577921
+      Tower Weapon 4 - 1_1: 828523172
+      Tower Weapon 4 - 1_10: -1800581420
+      Tower Weapon 4 - 1_11: -642110811
+      Tower Weapon 4 - 1_12: 2095679129
+      Tower Weapon 4 - 1_13: 548742729
+      Tower Weapon 4 - 1_14: -1088527023
+      Tower Weapon 4 - 1_15: 1005314379
+      Tower Weapon 4 - 1_16: 889125728
+      Tower Weapon 4 - 1_17: 702009564
+      Tower Weapon 4 - 1_18: 865136823
+      Tower Weapon 4 - 1_19: -1688686874
+      Tower Weapon 4 - 1_2: 1185428526
+      Tower Weapon 4 - 1_20: 95669595
+      Tower Weapon 4 - 1_21: -1592915136
+      Tower Weapon 4 - 1_22: -674069929
+      Tower Weapon 4 - 1_23: -770824305
+      Tower Weapon 4 - 1_24: 2114464015
+      Tower Weapon 4 - 1_25: 1619879993
+      Tower Weapon 4 - 1_26: 200189294
+      Tower Weapon 4 - 1_27: 957232443
+      Tower Weapon 4 - 1_28: -1477186035
+      Tower Weapon 4 - 1_29: -1255835386
+      Tower Weapon 4 - 1_3: -300121275
+      Tower Weapon 4 - 1_30: -136632605
+      Tower Weapon 4 - 1_31: -1769429167
+      Tower Weapon 4 - 1_32: -1863861976
+      Tower Weapon 4 - 1_33: 109839512
+      Tower Weapon 4 - 1_34: 236334374
+      Tower Weapon 4 - 1_35: 1077304407
+      Tower Weapon 4 - 1_36: -632214654
+      Tower Weapon 4 - 1_37: 442140390
+      Tower Weapon 4 - 1_38: 1676662140
+      Tower Weapon 4 - 1_39: 465985445
+      Tower Weapon 4 - 1_4: 547741810
+      Tower Weapon 4 - 1_40: 962205901
+      Tower Weapon 4 - 1_5: -1172771585
+      Tower Weapon 4 - 1_6: -1813352527
+      Tower Weapon 4 - 1_7: 1771574760
+      Tower Weapon 4 - 1_8: -825497936
+      Tower Weapon 4 - 1_9: 1040704722
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

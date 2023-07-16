@@ -341,9 +341,17 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9099328419715628202, guid: 75be36cf4b083fb44aa3732d89bcf18f, type: 3}
+      propertyPath: towerPrefab
+      value: 
+      objectReference: {fileID: 2315602139065262555, guid: 8314c77297ac41c4b929af322bc1d782, type: 3}
+    - target: {fileID: 9099328419715628202, guid: 75be36cf4b083fb44aa3732d89bcf18f, type: 3}
       propertyPath: towerStatsSO
       value: 
       objectReference: {fileID: 11400000, guid: 4ae52cfd088802b49a4821b72b8f5488, type: 2}
+    - target: {fileID: 9099328419715628202, guid: 75be36cf4b083fb44aa3732d89bcf18f, type: 3}
+      propertyPath: towerPreviewPrefab
+      value: 
+      objectReference: {fileID: 4006964067299443244, guid: 7b987f27652941d45afc3d2c6a877a3f, type: 3}
     - target: {fileID: 9099328419715628206, guid: 75be36cf4b083fb44aa3732d89bcf18f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -620,6 +628,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1514827546415441616, guid: 5f765d255c4056a49bb9094a19ae6be9, type: 3}
+      propertyPath: wayPoints.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514827546415441616, guid: 5f765d255c4056a49bb9094a19ae6be9, type: 3}
       propertyPath: wayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -633,7 +645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1514827546415441617, guid: 5f765d255c4056a49bb9094a19ae6be9, type: 3}
       propertyPath: ObjectToPool.Array.size
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1514827546415441617, guid: 5f765d255c4056a49bb9094a19ae6be9, type: 3}
       propertyPath: ObjectToPool.Array.data[0]
@@ -658,7 +670,7 @@ PrefabInstance:
     - target: {fileID: 1514827546415441617, guid: 5f765d255c4056a49bb9094a19ae6be9, type: 3}
       propertyPath: ObjectToPool.Array.data[5]
       value: 
-      objectReference: {fileID: 4655751125535044505, guid: 1d0e9c1a4a1a8ca4fa725fb0b074cc60, type: 3}
+      objectReference: {fileID: 728979652066835957, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
     - target: {fileID: 1514827546415441617, guid: 5f765d255c4056a49bb9094a19ae6be9, type: 3}
       propertyPath: ObjectToPool.Array.data[6]
       value: 

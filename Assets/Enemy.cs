@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 
     private void Update()
     {
+        if (GameManager.Singleton.gameState != GameState.InGame) return;
         MoveToWayPoint();
     }
 
@@ -176,7 +177,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         currentHealth -= damage;
         // health = Mathf.Clamp(health, health, 0);
         UpdateHealth();
-        PoolSystem.Singleton.SpawnFromPool(hitVFXPrefab, transform.position, Quaternion.identity, transform);
+        PoolSystem.Singleton.SpawnFromPool(hitVFXPrefab, transform.position, Quaternion.identity);
         if (currentHealth <= 0)
         {
             if (!isDead)
