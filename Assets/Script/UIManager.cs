@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     }
 
     public GameObject gameOverPanel;
+    public TowerItemUI[] towerItemUI;
 
     [SerializeField] GameObject levelComplete_Group;
     [SerializeField] GameObject levelFail_Group;
@@ -39,9 +40,12 @@ public class UIManager : MonoBehaviour
         mainMenuButton.onClick.AddListener(() => LevelController.Singleton.LoadMainMenu());
 
 
-        GameManager.Singleton.OnLevelComplete += GameManage_OnLevelCompleted;
-        GameManager.Singleton.OnLevelFailed += GameManage_OnLevelFailed;
+        GameManager.Singleton.OnLevelComplete += GameManager_OnLevelCompleted;
+        GameManager.Singleton.OnLevelFailed += GameManager_OnLevelFailed;
         HideGameOverPanel();
+
+        GameManager.Singleton.OnCoinChanged += GameManager_OnCoinChanged;
+
     }
 
     private void Update()
@@ -69,15 +73,20 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void GameManage_OnLevelCompleted(object sender, EventArgs e)
+    public void GameManager_OnLevelCompleted(object sender, EventArgs e)
     {
         ShowLevelComplete();
     }
 
-    public void GameManage_OnLevelFailed(object sender, EventArgs e)
+    public void GameManager_OnLevelFailed(object sender, EventArgs e)
     {
         ShowLevelFail();
     }
+    public void GameManager_OnCoinChanged(object sender, EventArgs e)
+    {
+        UpdateTowerUIAlpha();
+    }
+
     public void LevelSetup()
     {
         var gm = GameManager.Singleton;
@@ -139,5 +148,25 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         levelComplete_Group.SetActive(false);
         levelFail_Group.SetActive(false);
+    }
+
+
+    public void UpdateTowerUIAlpha()
+    {
+        for (int i = 0; i < towerItemUI.Length; i++)
+        {
+            var color = towerItemUI[i].towerImage.color;
+            if (GameManager.Singleton.CheckIfEnoughCoinForPrice(towerItemUI[i].towerStatsSO.towerPrice))
+            {
+                towerItemUI[i].HideLockObject();
+                color.a = 1; 
+            }
+            else
+            {
+                towerItemUI[i].ShowLockObject();
+                color.a = .5f; 
+            }
+            towerItemUI[i].towerImage.color = color;
+        }
     }
 }
