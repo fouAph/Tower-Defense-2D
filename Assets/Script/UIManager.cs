@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
         UpdateCoinUI();
         nextLevelButton.onClick.AddListener(() => LevelController.Singleton.LoadNextLevel());
         retryButton.onClick.AddListener(() => LevelController.Singleton.ReloadLevel());
-        mainMenuButton.onClick.AddListener(() => LevelController.Singleton.LoadNextLevel());
+        mainMenuButton.onClick.AddListener(() => LevelController.Singleton.LoadMainMenu());
 
 
         GameManager.Singleton.OnLevelComplete += GameManage_OnLevelCompleted;
@@ -109,7 +109,7 @@ public class UIManager : MonoBehaviour
     {
         var gm = GameManager.Singleton;
         string wvClearText = waveClear_TMP.text;
-        waveClear_TMP.text = gm.currentWave != gm.currentLevelSetting.enemyDatas.Length ? wvClearText : "Level Compeleted";
+        waveClear_TMP.text = gm.currentWave != gm.GetMaxWave() ? wvClearText : "Level Compeleted";
         float startX = waveClear_TMP.transform.position.x;
         float toX = -333f;
         float endX = 1155f;

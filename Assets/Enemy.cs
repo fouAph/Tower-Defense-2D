@@ -85,7 +85,11 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
                 {
                     //TODO When Arrived, Damage The Player (Decrease player Health)
                     GameManager.Singleton.OnDamaged(enemyStatsSO.attackDamage);
-                    OnEnemyArrive();
+                    RemoveThisEnemyFromEnemyAlive();
+
+                    if (GameManager.Singleton.CheckIfNoEnemyLeft())
+                        GameManager.Singleton.OnWaveCompleted_Invoke();
+
                     gameObject.SetActive(false);
                     return;
                 }
@@ -161,14 +165,16 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         if (currentHealth <= 0)
         {
             if (!isDead)
+            {
                 AddCoinReward();
 
-            UIManager.Singleton.UpdateCoinUI();
-            OnEnemyArrive();
-            isDead = true;
-            if (GameManager.Singleton.CheckIfNoEnemyLeft())
-                GameManager.Singleton.OnWaveCompleted_Invoke();
+                UIManager.Singleton.UpdateCoinUI();
+                RemoveThisEnemyFromEnemyAlive();
 
+                if (GameManager.Singleton.CheckIfNoEnemyLeft())
+                    GameManager.Singleton.OnWaveCompleted_Invoke();
+            }
+            isDead = true;
             gameObject.SetActive(false);
 
         }
@@ -181,7 +187,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         healthBar.SetSize(healthBarSize);
     }
 
-    private void OnEnemyArrive()
+    private void RemoveThisEnemyFromEnemyAlive()
     {
         GameManager.Singleton.enemiesAlive.Remove(this);
     }

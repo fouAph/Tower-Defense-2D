@@ -18,8 +18,9 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler OnWaveCompleted;
 
-    [NonSerialized] public int currentWave = 1;
-    [NonSerialized] public List<Enemy> enemiesAlive = new List<Enemy>();
+    public int currentWave = 1;
+    public int nextWave { get { return currentWave - 1; } }
+   [NonSerialized] public List<Enemy> enemiesAlive = new List<Enemy>();
     private const int COUNTDOWN_TIMER = 3;
 
     [SerializeField] Slider healthBar;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnLevelComplete;
     public event EventHandler OnLevelFailed;
 
+    private int maxWave;
 
     private void Awake()
     {
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
         LevelSetup();
         StartCoroutine(StartGameCountdown());
 
+        maxWave = currentLevelSetting.enemyDatas.Length;
     }
 
     private void Update()
@@ -94,7 +97,7 @@ public class GameManager : MonoBehaviour
     private void LevelSetup()
     {
         currentHealth = maxHealth;
-        EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(currentLevelSetting.enemyDatas[currentWave - 1].enemyToSpawnList);
+        EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(currentLevelSetting.enemyDatas[nextWave].enemyToSpawnList);
         countDownHelper.gameObject.SetActive(true);
         UIManager.Singleton.LevelSetup();
     }
@@ -142,6 +145,11 @@ public class GameManager : MonoBehaviour
         return coin;
     }
 
+    public int GetMaxWave()
+    {
+        return maxWave;
+    }
+
     public void AddCoin(int value)
     {
         coin += value;
@@ -168,24 +176,20 @@ public class GameManager : MonoBehaviour
         return enemiesAlive.Count == 0;
     }
 
-    public void OnWaveCompleted_Invoke()
-    {
-        OnWaveCompleted?.Invoke(this, EventArgs.Empty);
-        if (CheckIfLevelComplete())
-        {
-            OnLevelComplete?.Invoke(this, EventArgs.Empty);
-        }
-    }
+    public void OnWaveCompleted_Invoke() => OnWaveCompleted?.Invoke(this, EventArgs.Empty);
 
     private void GameManager_OnWaveCompleted(object sender, EventArgs e)
     {
-        if (currentWave != currentLevelSetting.enemyDatas.Length)
+        if (currentWave != maxWave)
         {
             currentWave++;
             EnemyWaveSpawner.Singleton.AddEnemyToSpawnList(currentLevelSetting.enemyDatas[currentWave - 1].enemyToSpawnList);
 
             StartCoroutine(StartGameCountdown());
         }
+        else
+            OnLevelComplete?.Invoke(this, EventArgs.Empty);
+
 
         UIManager.Singleton.LevelSetup();
     }
@@ -198,17 +202,17 @@ public class GameManager : MonoBehaviour
         // PoolSystem.Singleton.SpawnFromPool(hitVFXPrefab, transform.position, Quaternion.identity, transform);
         if (currentHealth <= 0)
         {
-            //TODO Spawn GameOver Panel
             OnLevelFailed?.Invoke(this, EventArgs.Empty);
         }
     }
 
     public void GameManager_OnLevelComplete(object sender, EventArgs e)
-    { 
+    {
 
     }
+
     public void GameManager_OnLevelFailed(object sender, EventArgs e)
-    { 
+    {
     }
 
     private void UpdateHealthBarUI()
@@ -218,20 +222,5 @@ public class GameManager : MonoBehaviour
         print(healthPercentage);
         healthBar.value = (float)healthPercentage;
     }
-
-    private bool CheckIfLevelComplete()
-    {
-        if (currentWave == currentLevelSetting.enemyDatas.Length)
-        {
-            return true;
-        }
-
-        print(currentWave == currentLevelSetting.enemyDatas.Length);
-        return false;
-    }
-
-
-
-
 }
 public enum GameState { Menu, InGame, GameOver, NotReady, InShop }
