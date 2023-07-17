@@ -98,6 +98,35 @@ public class TowerDefenseGrid : MonoBehaviour
                 grid.GetGridObject(cornerPosition[i]).SetOccupied(true);
         }
 
+    }
+
+
+    public static void ResetOccupiedWithCollider(BoxCollider2D boxCollider2D)
+    {
+        Vector2[] cornerPosition = new Vector2[5];
+        Bounds bounds = boxCollider2D.bounds;
+
+        // Calculate the corner positions
+        Vector2 topLeftCorner = new Vector2(bounds.min.x, bounds.max.y);
+        Vector2 topRightCorner = bounds.max;
+        Vector2 topMiddleCorner = new Vector2(bounds.min.x / 2, bounds.max.y);
+        Vector2 bottomLeftCorner = bounds.min;
+        Vector2 bottomRightCorner = new Vector2(bounds.max.x, bounds.min.y);
+
+        // Print the corner positions
+
+        cornerPosition[0] = topLeftCorner;
+        cornerPosition[1] = topRightCorner;
+        cornerPosition[2] = bottomLeftCorner;
+        cornerPosition[3] = bottomRightCorner;
+        cornerPosition[4] = topMiddleCorner;
+
+        for (int i = 0; i < cornerPosition.Length; i++)
+        {
+            if (grid.GetGridObject(cornerPosition[i]) != null)
+                grid.GetGridObject(cornerPosition[i]).SetOccupied(false);
+        }
+
         // for (int i = 0; i < cornerPosition.Length; i++)
         // {
         //     if (grid.GetGridObject(cornerPosition[i]) != null)
@@ -109,6 +138,7 @@ public class TowerDefenseGrid : MonoBehaviour
         // Debug.Log("Bottom Left Corner: " + bottomLeftCorner);
         // Debug.Log("Bottom Right Corner: " + bottomRightCorner);
     }
+
 
     public static void SpawnTower()
     {

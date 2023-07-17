@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8b8c9629edc244aac3e3b37f3f25c2, type: 3}
   m_Name: Tower 2
   m_EditorClassIdentifier: 
-  towerPrice: 4444
+  towerPrice: 520
   baseShootingSpeed: 1
   baseSensorRadius: 20
   baseWeaponDamage: 3
   towerStatsUpgrades:
-  - upgradePrice: 400
-    shootingSpeedUpgrade: 0.3
+  - upgradePrice: 750
+    shootingSpeedUpgrade: 0.4
     sensorRadiusUpgrade: 3
-    weaponDamageUpgrade: 1
+    weaponDamageUpgrade: 2
     towerLevelSprite: {fileID: -723667343, guid: 461cdc233d616034e99f32f4c406e6e4, type: 3}
-  - upgradePrice: 500
-    shootingSpeedUpgrade: 0.7
+  - upgradePrice: 950
+    shootingSpeedUpgrade: 0.6
     sensorRadiusUpgrade: 3
-    weaponDamageUpgrade: 1
+    weaponDamageUpgrade: 3
     towerLevelSprite: {fileID: -2121871532, guid: 461cdc233d616034e99f32f4c406e6e4, type: 3}

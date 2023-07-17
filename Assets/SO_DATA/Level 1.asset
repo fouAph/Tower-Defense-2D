@@ -17,17 +17,26 @@ MonoBehaviour:
   isUnlocked: 1
   levelPreviewSprite: {fileID: 21300000, guid: ae2722464f2c5fa4ebd1f148d9f3f1b5, type: 3}
   enemyDatas:
-  - waveName: Wave 1
+  - waveName: 
     enemyToSpawnList:
-    - {fileID: 1714439861303489614, guid: dbb27ee21b6ce5a4e8ea73de0a93d7d4, type: 3}
-    - {fileID: 1714439861303489614, guid: dbb27ee21b6ce5a4e8ea73de0a93d7d4, type: 3}
-    - {fileID: 1714439861303489614, guid: dbb27ee21b6ce5a4e8ea73de0a93d7d4, type: 3}
-    - {fileID: 3543900818468734657, guid: e7bb16d175209bf40ad4a713eee40968, type: 3}
-  - waveName: Wave 2
+    - {fileID: 6095839991404650987, guid: 7389b3139e933ce478f11b396fec21c8, type: 3}
+    - {fileID: 6095839991404650987, guid: 7389b3139e933ce478f11b396fec21c8, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}
+  - waveName: 
     enemyToSpawnList:
-    - {fileID: 3543900818468734657, guid: e7bb16d175209bf40ad4a713eee40968, type: 3}
-    - {fileID: 2644803929063640586, guid: d9f76db57da6c9241a274fe465378804, type: 3}
-    - {fileID: 3543900818468734657, guid: e7bb16d175209bf40ad4a713eee40968, type: 3}
-    - {fileID: 2644803929063640586, guid: d9f76db57da6c9241a274fe465378804, type: 3}
-    - {fileID: 2644803929063640586, guid: d9f76db57da6c9241a274fe465378804, type: 3}
-    - {fileID: 2644803929063640586, guid: d9f76db57da6c9241a274fe465378804, type: 3}
+    - {fileID: 6095839991404650987, guid: 7389b3139e933ce478f11b396fec21c8, type: 3}
+    - {fileID: 6095839991404650987, guid: 7389b3139e933ce478f11b396fec21c8, type: 3}
+    - {fileID: 6095839991404650987, guid: 7389b3139e933ce478f11b396fec21c8, type: 3}
+    - {fileID: 6095839991404650987, guid: 7389b3139e933ce478f11b396fec21c8, type: 3}
+    - {fileID: 6095839991404650987, guid: 7389b3139e933ce478f11b396fec21c8, type: 3}
+    - {fileID: 6095839991404650987, guid: 7389b3139e933ce478f11b396fec21c8, type: 3}
+    - {fileID: 6095839991404650987, guid: 7389b3139e933ce478f11b396fec21c8, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}
+    - {fileID: 8418704801139748442, guid: 817b2828995853e4eaea62ad7acef2bd, type: 3}

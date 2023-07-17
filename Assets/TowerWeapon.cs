@@ -15,6 +15,11 @@ public class TowerWeapon : MonoBehaviour
         animator.SetBool("IsShooting", tower.CheckIsEnemyTargetAvailable());
     }
 
+    public void SetShoot(bool value)
+    {
+        animator.SetBool("IsShooting",false);
+    }
+
     public void Fire()
     {
         tower.FireBullet();

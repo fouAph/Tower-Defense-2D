@@ -83,6 +83,11 @@ public class GameManager : MonoBehaviour
                 gridobj.TriggerGridObjectChanged();
                 SubstractCoin(selectedTower.towerStatsSO.towerPrice);
                 UIManager.Singleton.UpdateCoinUI();
+                if (!CheckIfEnoughCoinForPrice(selectedTower.towerStatsSO.towerPrice))
+                {
+                    UIManager.Singleton.ClearSelected();
+                    selectedTower = null;
+                }
             }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))

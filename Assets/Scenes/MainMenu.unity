@@ -1292,6 +1292,7 @@ MonoBehaviour:
   levelSettingList:
   - {fileID: 11400000, guid: 866e784dc5fe70e43aad18579e7f3f96, type: 2}
   - {fileID: 11400000, guid: d8cd228f7fce7634db3903a2a4eb3be3, type: 2}
+  - {fileID: 11400000, guid: 8d1f6c8826d54a949886860a54226453, type: 2}
 --- !u!4 &879854477
 Transform:
   m_ObjectHideFlags: 0

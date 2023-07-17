@@ -20,6 +20,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3543900818468734657, guid: e7bb16d175209bf40ad4a713eee40968, type: 3}
+      propertyPath: enemyStatsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b9962de600a4514ca1327fbe42fbb2b, type: 2}
+    - target: {fileID: 3543900818468734657, guid: e7bb16d175209bf40ad4a713eee40968, type: 3}
       propertyPath: wayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -77,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3543900818468734686, guid: e7bb16d175209bf40ad4a713eee40968, type: 3}
       propertyPath: m_Name
-      value: Enemy Red
+      value: Scorpion Level 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7bb16d175209bf40ad4a713eee40968, type: 3}

@@ -237,9 +237,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainGamePrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 4898359715125080253, guid: a48c6df80d4fb6941966d8bc56961cdb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5455936884031683086, guid: a48c6df80d4fb6941966d8bc56961cdb, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5455936884031683086, guid: a48c6df80d4fb6941966d8bc56961cdb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -471,6 +475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 728979652066835957, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2794941374633009467, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -513,10 +521,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2794941374633009467, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8787507146180408153, guid: 2ec9eeebd75f6544789e2406709a1de0, type: 3}
-      propertyPath: shootingSpeed
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2376,7 +2380,7 @@ Transform:
   - {fileID: 9098141023203356649}
   - {fileID: 1357897807}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &9098141021703154839
 Grid:

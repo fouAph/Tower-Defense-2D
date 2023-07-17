@@ -18,6 +18,7 @@ public class TowerUpgrade : MonoBehaviour
     private void Start()
     {
         upgradeSpriteButton.ClickFunc = UpgradeTower;
+        deleteSpriteButton.ClickFunc = DeleteTower;
         HideSensorOverlay();
     }
 
@@ -85,13 +86,25 @@ public class TowerUpgrade : MonoBehaviour
             upgradeSpriteButton.gameObject.SetActive(false);
         }
         UpdateSensorOverlay(tower);
-        UpdateUpgradePrice(); 
+        UpdateUpgradePrice();
     }
 
     private void UpdateUpgradePrice()
     {
         if (tower.GetCurrentTowerLevel() != tower.towerStatsSO.towerStatsUpgrades.Length)
             upgradePrice_TextMesh.text = "$" + tower.towerStatsSO.towerStatsUpgrades[tower.GetCurrentTowerLevel()].upgradePrice.ToString();
+    }
+
+    private void DeleteTower()
+    {
+        TowerDefenseGrid.ResetOccupiedWithCollider(tower.GetComponent<BoxCollider2D>());
+        UIManager.Singleton.ClearSelected();
+        GameManager.Singleton.SetSelectedTower(null);
+        TDGridNode gridobj = TowerDefenseGrid.grid.GetGridObject(tower.transform.position);
+        gridobj.SetOccupied(false);
+        tower.gameObject.SetActive(false);
+        tower = null;
+        HideSensorOverlay();
     }
 }
 
