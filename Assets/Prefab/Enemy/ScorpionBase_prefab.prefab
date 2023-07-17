@@ -102,8 +102,8 @@ MonoBehaviour:
   enemyStatsSO: {fileID: 11400000, guid: ea2eba7f1e695e24da3d3a833c56dac2, type: 2}
   hitVFXPrefab: {fileID: 7120798221871322313, guid: b916873db28e1c64da5644d7f9d3fc4d, type: 3}
   currentWayPointList: []
-  flipSpriteWhenGoingLeft: 0
-  flipSpriteWhenGoingRight: 1
+  flipWhenTurnLeft: 0
+  flipWhenTurnRight: 1
 --- !u!61 &3543900818468734661
 BoxCollider2D:
   m_ObjectHideFlags: 0

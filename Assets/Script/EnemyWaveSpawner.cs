@@ -11,12 +11,11 @@ public class EnemyWaveSpawner : MonoBehaviour
     }
 
     [SerializeField] Transform spawnPosition;
-    [SerializeField] float spawnRate = 1;
-    [SerializeField] List<Transform> wayPoints = new List<Transform>();
-    [SerializeField] List<Enemy> enemyToSpawn = new List<Enemy>();
+    [SerializeField] float spawnRate = 1;   //1 enemy persecond
+    [SerializeField] EnemyPath[] enemyPaths;
+    private List<Enemy> enemyToSpawn = new List<Enemy>();
 
-    // public event EventHandler onEnemySpawn;
-
+    int rand;
     private float lastSpawned;
 
     private void Update()
@@ -34,13 +33,20 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        var enemyObj = PoolSystem.Singleton.SpawnFromPool(enemyToSpawn[0].gameObject, spawnPosition.position, Quaternion.identity);
-        Enemy enemy = enemyObj.GetComponent<Enemy>();
-        enemy.SetWayPoints(wayPoints);
+        rand = UnityEngine.Random.Range(0, enemyPaths.Length);
+        var enemyObj = PoolSystem.Singleton.SpawnFromPool(enemyToSpawn[0].gameObject, enemyPaths[rand].spawnPoint.position, Quaternion.identity);
 
-        enemyToSpawn.RemoveAt(0); 
+        Enemy enemy = enemyObj.GetComponent<Enemy>();
+        List<Transform> wp = new List<Transform>();
+        foreach (var item in enemyPaths[rand].wayPoints)
+        {
+            wp.Add(item);
+        }
+        enemy.SetWayPoints(wp);
+
+        enemyToSpawn.RemoveAt(0);
     }
-  
+
     public void AddEnemyToSpawnList(List<Enemy> enemyList)
     {
         foreach (var item in enemyList)
@@ -49,4 +55,10 @@ public class EnemyWaveSpawner : MonoBehaviour
         }
     }
 
+}
+[System.Serializable]
+public struct EnemyPath
+{
+    public Transform spawnPoint;
+    public Transform[] wayPoints;
 }

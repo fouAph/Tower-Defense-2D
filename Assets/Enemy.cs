@@ -6,14 +6,13 @@ using System;
 
 public class Enemy : MonoBehaviour, IDamageable, IPooledObject
 {
-    private const int WORLDBAR_SCALE = 14;
+    private const int WORLDBAR_SCALE = 9;
     [SerializeField] EnemyStatsSO enemyStatsSO;
     [SerializeField] GameObject hitVFXPrefab;
     [SerializeField] List<Transform> currentWayPointList = new List<Transform>();
 
-    [SerializeField] bool flipSpriteWhenGoingLeft;
-    [SerializeField] bool flipSpriteWhenGoingRight;
-
+    [SerializeField] bool flipWhenTurnLeft;
+    [SerializeField] bool flipWhenTurnRight;
 
     private World_Bar healthBar;
 
@@ -114,48 +113,53 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
         //Right Direction
         if (angle > -45 && angle <= 45)
         {
-            FlipXSprite();
-            spriteRenderer.flipY = false;
-
             PlayAnimation(AnimatorHashToIntMoveRight);
+
+            if (flipWhenTurnRight)
+            {
+                spriteRenderer.flipX = true;
+                spriteRenderer.flipY = false;
+                return;
+            }
+
+            spriteRenderer.flipY = false;
+            spriteRenderer.flipX = false;
         }
 
         //Up Direction
         else if (angle > 45 && angle <= 135)
         {
-
+            PlayAnimation(AnimatorHashToIntMoveUp);
             spriteRenderer.flipY = true;
             spriteRenderer.flipX = false;
 
-            PlayAnimation(AnimatorHashToIntMoveUp);
+
         }
         //Left Direction
         else if (angle > 135 || angle <= -135)
         {
-            FlipXSprite();
+            PlayAnimation(AnimatorHashToIntMoveLeft);
+            if (flipWhenTurnLeft)
+            {
+                spriteRenderer.flipX = true;
+                spriteRenderer.flipY = false;
+                return;
+            }
 
             spriteRenderer.flipY = false;
-
-            PlayAnimation(AnimatorHashToIntMoveLeft);
-
+            spriteRenderer.flipX = false;
 
         }
         //Down Direction
         else
         {
+            PlayAnimation(AnimatorHashToIntMoveDown);
+
             spriteRenderer.flipY = false;
             spriteRenderer.flipX = false;
-            PlayAnimation(AnimatorHashToIntMoveDown);
+
         }
 
-    }
-
-    private void FlipXSprite()
-    {
-        if (flipSpriteWhenGoingLeft)
-            spriteRenderer.flipX = true;
-
-        else spriteRenderer.flipX = false;
     }
 
     public List<Transform> GetWayPoints()
@@ -175,7 +179,6 @@ public class Enemy : MonoBehaviour, IDamageable, IPooledObject
     public void OnDamaged(int damage)
     {
         currentHealth -= damage;
-        // health = Mathf.Clamp(health, health, 0);
         UpdateHealth();
         PoolSystem.Singleton.SpawnFromPool(hitVFXPrefab, transform.position, Quaternion.identity);
         if (currentHealth <= 0)
